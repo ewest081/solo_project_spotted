@@ -6,8 +6,11 @@
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 var express = require('express');
 var path = require('path');
+var pg = require('pg');
+var passport = require('passport');
 
 var router = express.Router();
+var connectionString = 'postgres://localhost:5432/spotted_database';
 
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 //              Index Routes

@@ -1,3 +1,45 @@
 body {
-  color: red;
+  background-color: #3d44d0;
+  width: 100%;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+header, footer {
+  background-color: #3d44d0;
+  width: 100%;
+  margin: 0 auto;
+  color: #d5a954;
+}
+
+header {
+  text-align: right;
+  height: 110px;
+}
+
+footer {
+    text-align: center;
+}
+
+.inner {
+  width: 100%;
+  margin: 0;
+  background-color: #5a9330;
+  padding: 20px 0;
+}
+
+.content {
+  background-color: white;
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.header-logo {
+  float: left;
+  height: 100px;
+}
+
+.header-text, .footer-text {
+  padding: 10px;
 }

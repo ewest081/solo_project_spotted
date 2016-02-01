@@ -26,5 +26,5 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 //              App Controllers
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 app.controller('MainController', ['$scope', function($scope){
-    $scope.message = "Angularis working!";
+    $scope.message = "Angular is working!";
 }]);

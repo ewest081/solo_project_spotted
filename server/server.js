@@ -5,10 +5,18 @@
 //              Server Requirements
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 var express = require('express');
-
+var pg = require('pg');
+var bodyParser = require('body-parser');
+// var passport = require('passport');
+// var session = require('express-session');
 var index = require('./routes/index');
-var app = express();
+// var localStrategy = require('passport-local').Strategy;
 
+var app = express();
+var connectionString = 'postgres://localhost:5432/spotted_database';
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 //              Server Functions
