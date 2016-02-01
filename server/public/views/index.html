@@ -11,10 +11,13 @@
     <script src="/vendors/angular/angular.min.js"></script>
     <script src="/vendors/angular-route/angular-route.min.js"></script>
     <script src="/assets/scripts/client.min.js"></script>
+
+    <base href="/">
 </head>
 
-<body ng-controller="MainController">
-    <h1>{{message}}</h1>
+<body>
+    <h1>This is the Index</h1>
+    <div ng-view></div>
 </body>
 
 </html>
