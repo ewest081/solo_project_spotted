@@ -15,6 +15,22 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
           templateUrl: 'views/home_page.html',
           controller: 'MainController'
         })
+        .when('/about', {
+          templateUrl: 'views/about.html',
+          controller: 'AboutController'
+        })
+        .when('/sign_in', {
+          templateUrl: 'views/sign_in.html',
+          controller: 'SignInController'
+        })
+        .when('/register', {
+          templateUrl: 'views/register.html',
+          controller: 'RegisterController'
+        })
+        .when('/guest', {
+          templateUrl: 'views/guest.html',
+          controller: 'GuestController'
+        })
         .otherwise({
           redirectTo: '/'
         });
@@ -27,4 +43,19 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 app.controller('MainController', ['$scope', function($scope){
     $scope.message = "Angular is working!";
+}]);
+
+app.controller('AboutController', ['$scope', function($scope){
+
+}]);
+
+app.controller('SignInController', ['$scope', function($scope){
+
+}]);
+
+app.controller('RegisterController', ['$scope', function($scope){
+
+}]);
+app.controller('GuestController', ['$scope', function($scope){
+
 }]);

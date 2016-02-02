@@ -2,7 +2,7 @@ body {
   background-color: #3d44d0;
   width: 100%;
   margin: 0 auto;
-  font-family: sans-serif;
+  font-family: "Gill Sans", sans-serif;
 }
 
 header, footer {
@@ -15,10 +15,12 @@ header, footer {
 header {
   text-align: right;
   height: 110px;
+  border-bottom: solid 5px #d5a954;
 }
 
 footer {
     text-align: center;
+    border-top: solid 5px #d5a954;
 }
 
 .inner {
@@ -26,10 +28,14 @@ footer {
   margin: 0;
   background-color: #5a9330;
   padding: 20px 0;
+  border-top: solid 5px black;
+  border-bottom: solid 5px black;
 }
 
 .content {
   background-color: white;
+  border: solid 5px #d5a954;
+  color: #3d44d0;
   width: 80%;
   margin: 0 auto;
   padding: 10px;
@@ -42,4 +48,34 @@ footer {
 
 .header-text, .footer-text {
   padding: 10px;
+}
+
+.home-page {
+  .heading {
+    h1, h2 {
+      text-align: center;
+    }
+    h1 {
+      font-size: 36pt;
+    }
+    h2 {
+      border-bottom: solid 3px #d5a954;
+      padding-bottom: 10px;
+    }
+  }
+}
+
+.button-box {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.home-page {
+  button{
+    width: 75%;
+    margin: 10px auto;
+    height: 100px;
+    background-color: #3d44d0;
+    color: #d5a954;
+  }
 }
