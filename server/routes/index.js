@@ -27,11 +27,11 @@ router.get('/success', function(request, response){
     response.send('success');
 });
 
-// router.get('/getUser', function(request, response){
-//     console.log('Yahtzee!', request.user);
-//     console.log('Authorized:', request.isAuthenticated());
-//     response.send(request.user);
-// });
+router.get('/getUser', function(request, response){
+    console.log('Yahtzee!', request.data);
+    console.log('Authorized:', request.isAuthenticated());
+    response.send(request.data);
+});
 
 router.post('/', passport.authenticate('local', {
     successRedirect: '/success',
