@@ -49,13 +49,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 //              App Controllers
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
-var user = null;
 
-app.controller('MainController', ['$scope', function($scope){
+app.controller('MainController', ['$scope', 'userData', function($scope, userData){
     $scope.notSignedIn = true;
     $scope.signedIn = false;
 
-    if(user !== null){
+    if(userData.globalUser !== false){
       $scope.notSignedIn = false;
       $scope.signedIn = true;
     }else{
@@ -75,15 +74,15 @@ app.controller('AboutController', ['$scope', function($scope){
 
 }]);
 
-app.controller('SignInController', ['$scope', '$http', '$location', function($scope, $http, $location){
+app.controller('SignInController', ['$scope', '$http', '$location', 'userData', function($scope, $http, $location, userData){
   $scope.data = {};
 
   $scope.submitData = function(){
     $http.post('/', $scope.data).then(function(response){
       $location.path(response.data);
     });
+    userData.shareData(response.data);
   };
-
 
 }]);
 
@@ -95,9 +94,8 @@ app.controller('GuestController', ['$scope', function($scope){
 
 }]);
 
-app.controller('UserController', ['$scope', 'userData', function($scope, userData){
-  $scope.user = userData;
-
+app.controller('UserController', 'userData', ['$scope', function($scope, userData){
+    $scope.welcome = "Welcome, " + userData.shareData.username;
 }]);
 
 app.controller('FailController', ['$scope', function($scope){
@@ -107,12 +105,18 @@ app.controller('FailController', ['$scope', function($scope){
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 //              App Factories
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
-app.factory('userData', '$http',[function($http){
-    var user = {};
+app.factory('userData', ['$rootScope', function($rootScope, data){
 
-      $http.get('/getUser').then(function(response){
-             user = response.data;
-          });
+  var globalUser = {};
+  globalUser.data = false;
 
-    return user;
+  globalUser.shareData = function(data){
+    this.data = data;
+    $rootScope.$broadcast('data_shared');
+  };
+
+  globalUser.getData = function(){
+    return this.data;
+  };
+
 }]);

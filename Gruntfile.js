@@ -17,7 +17,7 @@ module.exports = function(grunt) {
         watch: {
             scripts: {
                 files: ['client/client.js'],
-                tasks: ['jshint','uglify'],
+                // tasks: ['jshint','uglify'],
                 options: {
                     spawn: false
                 }
@@ -39,10 +39,10 @@ module.exports = function(grunt) {
                 "dest": "server/public/vendors" +
                 "/"
             }
-        },
-        jshint: {
-            files: 'client/scripts/client.js'
         }
+        // jshint: {
+        //     files: 'client/scripts/client.js'
+        // }
     });
 
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -50,5 +50,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
 
-    grunt.registerTask('default', ['copy', 'uglify', 'watch', 'jshint']);
+    grunt.registerTask('default', ['copy', 'uglify', 'watch']);
 };
