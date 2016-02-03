@@ -53,12 +53,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 app.controller('MainController', ['$scope', 'userData', function($scope, userData){
     $scope.notSignedIn = true;
     $scope.signedIn = false;
-    // $scope.globalUser = {};
-    $scope.data = userData;
 
     changeNavLinks = function(){
-      // if($scope.globalUser !== null){
-      if($scope.data !== null){
+      if(userData.currentUser.username !== ''){
         $scope.notSignedIn = false;
         $scope.signedIn = true;
       }else{
@@ -134,6 +131,7 @@ app.factory('userData', ['$http', '$rootScope', '$timeout', function($http, $roo
 
   var setUser = function(username){
     currentUser.username = username;
+    changeNavLinks();
   };
 
   return {
