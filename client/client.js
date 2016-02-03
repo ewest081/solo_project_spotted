@@ -53,95 +53,126 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 app.controller('MainController', ['$scope', 'userData', function($scope, userData){
     $scope.notSignedIn = true;
     $scope.signedIn = false;
+    // $scope.globalUser = {};
+    $scope.data = userData;
 
-    if(userData.currentUser !== null){
-      $scope.notSignedIn = false;
-      $scope.signedIn = true;
-    }else{
-      $scope.notSignedIn = true;
-      $scope.signedIn = false;
-    }
-}]);
-
-
-
-app.controller('HomeController', ['$scope', function($scope){
-    $scope.about = false;
-    $scope.toggleAbout = function(){
-      $scope.about = $scope.about === true ? false: true;
+    changeNavLinks = function(){
+      // if($scope.globalUser !== null){
+      if($scope.data !== null){
+        $scope.notSignedIn = false;
+        $scope.signedIn = true;
+      }else{
+        $scope.notSignedIn = true;
+        $scope.signedIn = false;
+      }
     };
-}]);
+}]);///no longer nesting controllers
+
+    app.controller('HomeController', ['$scope', function($scope){
+        $scope.about = false;
+        $scope.toggleAbout = function(){
+          $scope.about = $scope.about === true ? false: true;
+        };
+    }]);
 
 
 
-app.controller('AboutController', ['$scope', function($scope){
+    app.controller('AboutController', ['$scope', function($scope){
 
-}]);
-
-
-
-app.controller('SignInController', ['$scope', '$http', '$location', 'userData', function($scope, $http, $location, userData){
-  $scope.data = {};
-
-  $scope.submitData = function(){
-    $http.post('/', $scope.data).then(function(response){
-      $location.path(response.data);
-      userData.sendData($scope.data);
-    });
-    // console.log("SignInController: ", $scope.data);
-  };
-
-}]);
+    }]);
 
 
 
-app.controller('RegisterController', ['$scope', function($scope){
+    app.controller('SignInController', ['$scope', '$http', '$location', 'userData', function($scope, $http, $location, userData){
+      $scope.data = {};
 
-}]);
+      $scope.submitData = function(){
+        $http.post('/', $scope.data).then(function(response){
+          userData.setUser($scope.data.username);
+          console.log($scope.data.username);
+          $location.path(response.data);
 
-
-
-app.controller('GuestController', ['$scope', function($scope){
-
-}]);
-
-
-
-app.controller('UserController', ['$scope', 'userData', function($scope, userData){
-    $scope.$on('data_shared', function(){
-      $scope.thisUser = userData.getData();
-    });
-
-    $scope.welcome = "Welcome, " + $scope.thisUser.username;
-
-    console.log("UserController: ", $scope.thisUser);
-}]);
+          // userData.sendData($scope.data);
+          // $scope.globalUser = $scope.data.username;
+          // changeNavLinks();
+        });
+        // console.log("SignInController: ", $scope.data.user);
+        // userData.id = $scope.data.user.id;
+        // userData.username = $scope.data.user.username;
 
 
+      };
 
-app.controller('FailController', ['$scope', function($scope){
-  console.log("Ha ha!");
-}]);
+    }]);
 
+
+
+    app.controller('RegisterController', ['$scope', function($scope){
+
+    }]);
+
+
+
+    app.controller('GuestController', ['$scope', function($scope){
+
+    }]);
+
+
+
+    app.controller('UserController', ['$scope', 'userData', function($scope, userData){
+        console.log('hi:', userData.currentUser.username);
+        $scope.thisUser = userData.currentUser.username;
+
+        // $scope.$on('data_shared', function(){
+        //   var sharedData = userData.getData();
+        //   $scope.thisUser = sharedData;
+        // });
+        $scope.welcome = "Welcome, " + $scope.thisUser + "!";
+        // $scope.welcome = "Welcome, " + $scope.globalUser.username + "!";
+
+        console.log("UserController: ", userData.currentUser);
+    }]);
+
+
+
+    app.controller('FailController', ['$scope', function($scope){
+      console.log("Ha ha!");
+    }]);
+
+// }]);
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 //              App Factories
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
-app.factory('userData', ['$rootScope', '$timeout', function($rootScope, $timeout){
+app.factory('userData', ['$http', '$rootScope', '$timeout', function($http, $rootScope, $timeout){
 
-  var currentUser = {};
-  currentUser.data = null;
+  var currentUser = {
+    username: ''
+  };
+  // currentUser.data = false;
 
-  currentUser.sendData = function(data){
-    currentUser.data = data;
-    $timeout(function(){
-      $rootScope.$broadcast('data_shared');
-    }, 100);
-  };
-  currentUser.getData = function(){
-    return currentUser.data;
-  };
+  // currentUser.sendData = function(data){
+  //   this.data = data;
+  //   // $timeout(function(){
+  //     // $rootScope.$broadcast('data_shared');
+  //
+  //     // $http.get('/getUser').then(function(response){
+  //     //   this.data = response.data;
+  //     // });
+  //     // changeNavLinks();
+  //   // }, 100);
+  // };
+  // currentUser.getData = function(){
+  //   return this.data;
+  // };
+var setUser = function(username){
+  currentUser.username = username;
+};
 
   // console.log("userData:", currentUser);
-  return currentUser;
+  // return currentUser;
+  return {
+    currentUser: currentUser,
+    setUser: setUser
+  };
 
 }]);

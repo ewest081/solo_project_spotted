@@ -25,12 +25,13 @@ router.get('/fail', function(request, response){
 
 router.get('/success', function(request, response){
     response.send('success');
+    // console.log(request);
 });
 
 router.get('/getUser', function(request, response){
     console.log('Yahtzee!', request.data);
     console.log('Authorized:', request.isAuthenticated());
-    response.send(request.data);
+    response.send(request);
 });
 
 router.post('/', passport.authenticate('local', {
