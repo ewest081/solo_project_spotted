@@ -4,7 +4,9 @@
 <div class="new-entry">
   <div class="entry-box">
     <h4>General</h4>
-    <label>Category: </label><select ng-model="data.category"><options ng-repeat="categories"></options></select><br/>
+    <label>Category: </label><select ng-model="data.category">
+      <option ng-repeat="category in categories">{{category}}</option>
+    </select><br/>
   </div>
   <br />
 
@@ -49,8 +51,12 @@
         <br />
 
         <div class="entry-box" ng-show="individualShow">
-          <label>Sex:</label><select ng-model="data.sex"><options ng-repeat="sexList"></options></select>
-          <label>Age:</label><select ng-model="data.age"><options ng-repeat="ageList"></options></select>
+          <label>Sex:</label><select ng-model="data.sex">
+              <options ng-repeat="sex in sexList">{{sex}}</options>
+            </select>
+          <label>Age:</label><select ng-model="data.age">
+              <options ng-repeat="age in ageList">{{age}}</options>
+            </select>
           <label>Individual Description: </label><input type="text" ng-model="data.individual_description"/><br/>
         </div>
         <br />
@@ -58,15 +64,19 @@
     <div class="entry-box">
       <h2>Weather Conditions</h2>
       <label>Atmospheric: </label>
-        <input type="checkbox" ng-model="data.sunny" value="true"/> Sunny
-        <input type="checkbox" ng-model="data.overcast" value="true"/> Overcast
-        <input type="checkbox" ng-model="data.raining" value="true"/> Raining
-        <input type="checkbox" ng-model="data.snowing" value="true"/> Snowing
-        <input type="checkbox" ng-model="data.foggy" value="true"/> Foggy
-        <input type="checkbox" ng-model="data.windy" value="true"/> Windy
+      <br />
+        <input type="checkbox" ng-model="data.sunny" value="true"/> Sunny<br />
+        <input type="checkbox" ng-model="data.overcast" value="true"/> Overcast<br />
+        <input type="checkbox" ng-model="data.raining" value="true"/> Raining<br />
+        <input type="checkbox" ng-model="data.snowing" value="true"/> Snowing<br />
+        <input type="checkbox" ng-model="data.foggy" value="true"/> Foggy<br />
+        <input type="checkbox" ng-model="data.windy" value="true"/> Windy<br />
         <input type="checkbox" ng-model="data.other" value="true"/> Other: <input type="text" ng-model="data.other_weather"/><br />
 
-      <label>Temperature (degrees F): </label><select ng-model="data.temperature"><options ng-repeat="tempList"></options></select><br/>
+        <br />
+      <label>Temperature (degrees F): </label><select ng-model="data.temperature">
+        <option ng-repeat="temp in tempList">{{temp}}</option>
+      </select><br/>
     </div>
     <br />
 
