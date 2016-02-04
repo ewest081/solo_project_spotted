@@ -1,0 +1,47 @@
+<h2>Log a new Spotting!</h2>
+
+
+<div class="new-entry">
+  <div class="entry-box">
+    <h4>General</h4>
+    <label>Category: </label><select type="text" ng-model="data.category"><options ng-repeat="categories"></options></select><br/>
+  </div>
+  <br />
+
+  <div class="entry-box">
+    <label>Common Name: </label><input type="text" ng-model="data.common_name"/><br/>
+  </div>
+  <br />
+
+  <div class="entry-box">
+    <label>Scientific Name: </label><input type="text" ng-model="data.scientific_name"/><br/>
+  </div>
+  <br />
+
+  <div class="entry-box">
+    <h4>Location</h4>
+    <label>Country: </label><input type="text" ng-model="data.location_country"/>
+    <label>State/Province: </label><input type="text" ng-model="data.location_state"/>
+    <label>County/Parish: </label><input type="text" ng-model="data.location_county"/><br/>
+  </div>
+  <br />
+
+  <div class="entry-box">
+    <h4>Date Spotted</h4>
+    <label>Year: </label><input type="date" ng-model="data.date_spotted"/>
+    <p>Or as much as you can remember:</p>
+    <label>Year: </label><input type="text" ng-model="data.year_spotted"/>
+    <label>Month </label><input type="text" ng-model="data.month_spotted"/>
+    <label>Day: </label><input type="text" ng-model="data.day_spotted"/><br/>
+  </div>
+  <br />
+
+
+
+
+  <div>
+    <a href="/user_home"><button class="cancel">Cancel</button></a>
+    <button ng-click="submitEntry()">Submit</button><br/>
+  </div>
+
+</div>

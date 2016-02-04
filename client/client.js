@@ -47,6 +47,14 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
           templateUrl: 'views/edit_profile.html',
           controller: 'EditProfileController',
         })
+        .when('/view_data', {
+          templateUrl: 'views/view_data.html',
+          controller: 'ViewDataController',
+        })
+        .when('/new_entry', {
+          templateUrl: 'views/new_entry.html',
+          controller: 'NewEntryController',
+        })
         .when('/log_out', {
           templateUrl: 'views/log_out.html',
           controller: 'LogOutController',
@@ -146,9 +154,50 @@ app.controller('UserController', ['$scope', 'userData', function($scope, userDat
 }]);
 
 
+
+app.controller('EditProfileController', ['$scope', 'userData', function($scope, userData){
+
+}]);
+
+
+app.controller('ViewDataController', ['$scope', 'userData', function($scope, userData){
+
+}]);
+
+
+
+app.controller('NewEntryController', ['$scope', 'userData', function($scope, userData){
+  $scope.categories = ["Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
+  $scope.group = false;
+  $scope.individual = false;
+  $scope.data = {};
+
+  var username = userData.currentUser.username;
+
+  $scope.isGroup = function(){
+
+  };
+
+  $scope.submitEntry = function(){
+    $http({
+      url: '/api/newEntry',
+      method: 'POST',
+      params: {
+
+        //don't forget to send userID and date submitted
+      }
+    }).then(function(response){
+        console.log(response.data);
+      });
+  };
+}]);
+
+
+
 app.controller('LogOutController', ['$scope', 'userData', function($scope, userData){
   $scope.warning = "Are you sure you want to log out, " + userData.currentUser.username + "?";
 }]);
+
 
 
 app.controller('FailController', ['$scope', function($scope){

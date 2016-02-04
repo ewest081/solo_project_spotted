@@ -42,6 +42,28 @@ router.post('/registerUser', function(request, response){
     });
 });
 
+router.post('/newEntry', function(request, response){
+  // console.log(request.query);
+
+  var newUser = {username: request.query.username,
+
+              };
+
+  pg.connect(connectionString, function(err, client){
+
+      // var query = client.query('INSERT INTO users (username, password, first_name, last_name, email) VALUES ($1, $2, $3, $4, $5)', [newUser.username, newUser.password, newUser.first_name, newUser.last_name, newUser.email]);
+
+      query.on('end', function(){
+          client.end();
+          response.send('Successful Entry Made!');
+      });
+
+      if(err) {
+          console.log(Error);
+      }
+    });
+});
+
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 //              Index Exports
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
