@@ -1,17 +1,30 @@
 <h2>Register</h2>
 
-<!-- <div class="register">
+<div class="register">
   <div class="register-box">
-    <label>Username:</label><input type="text" ng-model="data.username"/><br/>
+    <label>Username: </label><input type="text" ng-model="data.username"/><br/>
   </div>
   <br />
   <div class="register-box">
-    <label>Password:</label><input type="password" ng-model="data.password"/><br/>
+    <label>Password: </label><input type="password" ng-model="data.password"/><br/>
   </div>
   <br />
   <div>
-    <button ng-click="submitData()">Sign In</button><br/>
-    <p>New to Spotted?</p>
-    <a href="/register"><button class="register">Register</button></a>
+    <div class="register-box">
+      <label>First Name: </label><input type="text" ng-model="data.first_name"/><br/>
+    </div>
+    <br />
+    <div class="register-box">
+      <label>Last Name: </label><input type="text" ng-model="data.last_name"/><br/>
+    </div>
+    <br />
+    <div class="register-box">
+      <label>Email Address: </label><input type="text" ng-model="data.email"/><br/>
+    </div>
+    <br />
+
+    <button ng-click="registerData()">Register</button><br/>
+    <p>Already registered with Spotted?</p>
+    <a href="/sign_in"><button class="alternate">Sign In</button></a>
   </div>
-</div> -->
+</div>

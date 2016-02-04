@@ -77,13 +77,13 @@ footer {
 .nav:hover {
   color: #FBD488; }
 
-.sign-in .sign-in-box {
+.sign-in .sign-in-box, .register .sign-in-box {
   width: 200px;
   display: flex;
   justify-content: space-between; }
-  .sign-in .sign-in-box input {
+  .sign-in .sign-in-box input, .register .sign-in-box input {
     width: 100px; }
-.sign-in button {
+.sign-in button, .register button {
   width: 200px;
   margin: 0 0 10px 0;
   background-color: #5a9330;
@@ -92,15 +92,15 @@ footer {
   border-left: solid 2px #80B759;
   border-bottom: solid 2px #1E4900;
   border-right: solid 2px #1E4900; }
-.sign-in .register {
+.sign-in .alternate, .register .alternate {
   background-color: #3d44d0;
   border-top: solid 2px #5D63DA;
   border-left: solid 2px #5D63DA;
   border-bottom: solid 2px #111898;
   border-right: solid 2px #111898; }
-.sign-in button:hover {
+.sign-in button:hover, .register button:hover {
   background-color: #386E12; }
-.sign-in .register:hover {
+.sign-in .alternate:hover, .register .alternate:hover {
   background-color: #1B24C7; }
 
 /*# sourceMappingURL=stylesheet.css.map */

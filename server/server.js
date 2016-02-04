@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
 var index = require('./routes/index');
+var api = require('./routes/api');
 var localStrategy = require('passport-local').Strategy;
 
 var app = express();
@@ -76,6 +77,7 @@ passport.use('local', new localStrategy({
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 //              Server Functions
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
+app.use('/api', api);
 app.use('/', index);
 app.use(express.static('server/public/'));
 
