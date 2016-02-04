@@ -168,14 +168,24 @@ app.controller('ViewDataController', ['$scope', 'userData', function($scope, use
 
 app.controller('NewEntryController', ['$scope', 'userData', function($scope, userData){
   $scope.categories = ["Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
-  $scope.group = false;
-  $scope.individual = false;
+  $scope.sexList = ["Female", "Male", "Unknown"];
+  $scope.ageList = ["Adult", "Juvenile", "Neonate"];
+  $scope.tempList = ["0˚<", "0˚ - 15˚", "16˚ - 32˚", "33˚ - 49˚", "50˚ - 69˚", "70˚ - 89˚", ">90˚"];
+  // $scope.weatherList = ["Sunny", "Overcast", "Raining", "Snowing", "Foggy", "Windy", "Other"];
+  $scope.groupShow = false;
+  $scope.individualShow = false;
   $scope.data = {};
 
   var username = userData.currentUser.username;
 
   $scope.isGroup = function(){
-
+    if($scope.data.group == group){
+      $scope.groupShow = true;
+      $scope.individualShow = false;
+    }else if($scope.data.group == individual){
+      $scope.groupShow = false;
+      $scope.individualShow = true;
+    }
   };
 
   $scope.submitEntry = function(){

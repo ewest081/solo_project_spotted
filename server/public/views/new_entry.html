@@ -4,7 +4,7 @@
 <div class="new-entry">
   <div class="entry-box">
     <h4>General</h4>
-    <label>Category: </label><select type="text" ng-model="data.category"><options ng-repeat="categories"></options></select><br/>
+    <label>Category: </label><select ng-model="data.category"><options ng-repeat="categories"></options></select><br/>
   </div>
   <br />
 
@@ -36,7 +36,44 @@
   </div>
   <br />
 
+  <div class="entry-box">
+    <label><h4>Individual or Group?</h4></label>
+      <input type="radio" ng-model="data.group" ng-click="isGroup()" value="group"/>Group<br/>
+      <input type="radio" ng-model="data.group" ng-click="isGroup()" value="individual"/>Individual<br/>
+  </div>
+  <br />
 
+        <div class="entry-box" ng-show="groupShow">
+          <label>Estimated number in group: </label><input type="text" ng-model="data.number_in_group"/><br/>
+        </div>
+        <br />
+
+        <div class="entry-box" ng-show="individualShow">
+          <label>Sex:</label><select ng-model="data.sex"><options ng-repeat="sexList"></options></select>
+          <label>Age:</label><select ng-model="data.age"><options ng-repeat="ageList"></options></select>
+          <label>Individual Description: </label><input type="text" ng-model="data.individual_description"/><br/>
+        </div>
+        <br />
+
+    <div class="entry-box">
+      <h2>Weather Conditions</h2>
+      <label>Atmospheric: </label>
+        <input type="checkbox" ng-model="data.sunny" value="true"/> Sunny
+        <input type="checkbox" ng-model="data.overcast" value="true"/> Overcast
+        <input type="checkbox" ng-model="data.raining" value="true"/> Raining
+        <input type="checkbox" ng-model="data.snowing" value="true"/> Snowing
+        <input type="checkbox" ng-model="data.foggy" value="true"/> Foggy
+        <input type="checkbox" ng-model="data.windy" value="true"/> Windy
+        <input type="checkbox" ng-model="data.other" value="true"/> Other: <input type="text" ng-model="data.other_weather"/><br />
+
+      <label>Temperature (degrees F): </label><select ng-model="data.temperature"><options ng-repeat="tempList"></options></select><br/>
+    </div>
+    <br />
+
+    <div class="entry-box">
+      <label>Additional Notes: </label><input type="textarea" ng-model="data.additional_notes"/><br/>
+    </div>
+    <br />
 
 
   <div>
