@@ -131,7 +131,7 @@ app.controller('GuestController', ['$scope', function($scope){
 
 
 app.controller('UserController', ['$scope', 'userData', function($scope, userData){
-    console.log('hi:', userData.currentUser.username);
+    // console.log('hi:', userData.currentUser.username);
     $scope.thisUser = userData.currentUser.username;
 
     $scope.welcome = "Welcome, " + $scope.thisUser + "!";
