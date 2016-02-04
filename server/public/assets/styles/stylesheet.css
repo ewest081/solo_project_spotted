@@ -37,7 +37,8 @@ footer {
 
 .header-logo {
   float: left;
-  height: 100px; }
+  width: 30%;
+  max-height: 100px; }
 
 .header-text, .footer-text {
   padding: 10px;
@@ -101,6 +102,41 @@ footer {
 .sign-in button:hover, .register button:hover {
   background-color: #386E12; }
 .sign-in .alternate:hover, .register .alternate:hover {
+  background-color: #1B24C7; }
+
+.user-home {
+  margin: 0 auto; }
+  .user-home .user-choices {
+    display: flex;
+    justify-content: space-between; }
+
+.big-square-button {
+  height: 200px;
+  width: 48%;
+  margin: 0 auto;
+  color: #d5a954;
+  background-color: #5a9330;
+  border-top: solid 2px #80B759;
+  border-left: solid 2px #80B759;
+  border-bottom: solid 2px #1E4900;
+  border-right: solid 2px #1E4900; }
+
+.big-square-button:hover {
+  background-color: #386E12; }
+
+.wide-box {
+  width: 100%;
+  margin: 10px auto;
+  color: #d5a954;
+  background-color: #3d44d0;
+  border-top: solid 2px #5D63DA;
+  border-left: solid 2px #5D63DA;
+  border-bottom: solid 2px #111898;
+  border-right: solid 2px #111898; }
+  .wide-box h1 {
+    text-align: center; }
+
+.link-box:hover {
   background-color: #1B24C7; }
 
 /*# sourceMappingURL=stylesheet.css.map */

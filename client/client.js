@@ -43,6 +43,14 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
           templateUrl: 'views/register_success.html',
           controller: 'RegisterSuccessController',
         })
+        .when('/edit_profile', {
+          templateUrl: 'views/edit_profile.html',
+          controller: 'EditProfileController',
+        })
+        .when('/log_out', {
+          templateUrl: 'views/log_out.html',
+          controller: 'LogOutController',
+        })
         .otherwise({
           redirectTo: '/'
         });
@@ -69,7 +77,7 @@ app.controller('MainController', ['$scope', 'userData', function($scope, userDat
     };
 }]);
 
-app.controller('HomeController', ['$scope', function($scope){
+app.controller('HomeController', ['$scope', 'userData', function($scope, userData){
     $scope.about = false;
     $scope.toggleAbout = function(){
       $scope.about = $scope.about === true ? false: true;
@@ -137,6 +145,10 @@ app.controller('UserController', ['$scope', 'userData', function($scope, userDat
     $scope.welcome = "Welcome, " + $scope.thisUser + "!";
 }]);
 
+
+app.controller('LogOutController', ['$scope', 'userData', function($scope, userData){
+  $scope.warning = "Are you sure you want to log out, " + userData.currentUser.username + "?";
+}]);
 
 
 app.controller('FailController', ['$scope', function($scope){
