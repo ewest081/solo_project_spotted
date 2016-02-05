@@ -105,7 +105,7 @@ footer {
   color: #FBD488;
 }
 
-.sign-in, .register, .new-entry {
+.sign-in, .register, .new-entry, .entry-success {
   .sign-in-box {
      width: 200px;
      display: flex;
@@ -147,21 +147,30 @@ footer {
   .cancel:hover {
     background-color: #71122B;
   }
+  .medium {
+    width: 75%;
+    height: 85px;
+  }
+}
+
+.center-this {
+  text-align: center;
 }
 
 .user-home {
   margin: 0 auto;
   .user-choices {
     width: 100%;
-    display: flex;
-    justify-content: space-around;;
+    display: inline;
+    text-align: center;
+    // justify-content: space-around;;
   }
 }
 
 .big-square-button {
   height: 200px;
   margin: 0 auto;
-  width: 200px;
+  width: 49.7%;
   color: #d5a954;
   background-color: #5a9330;
   border-top: solid 2px #80B759;
@@ -191,10 +200,3 @@ footer {
 .link-box:hover {
   background-color: #1B24C7;
 }
-
-// .big-entry-box {
-//   input {
-//     width: 300px;
-//     height: 75px;
-//   }
-// };

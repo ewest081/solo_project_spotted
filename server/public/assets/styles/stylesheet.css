@@ -78,13 +78,13 @@ footer {
 .nav:hover {
   color: #FBD488; }
 
-.sign-in .sign-in-box, .register .sign-in-box, .new-entry .sign-in-box {
+.sign-in .sign-in-box, .register .sign-in-box, .new-entry .sign-in-box, .entry-success .sign-in-box {
   width: 200px;
   display: flex;
   justify-content: space-between; }
-  .sign-in .sign-in-box input, .register .sign-in-box input, .new-entry .sign-in-box input {
+  .sign-in .sign-in-box input, .register .sign-in-box input, .new-entry .sign-in-box input, .entry-success .sign-in-box input {
     width: 100px; }
-.sign-in button, .register button, .new-entry button {
+.sign-in button, .register button, .new-entry button, .entry-success button {
   width: 200px;
   margin: 0 0 10px 0;
   background-color: #5a9330;
@@ -93,36 +93,42 @@ footer {
   border-left: solid 2px #80B759;
   border-bottom: solid 2px #1E4900;
   border-right: solid 2px #1E4900; }
-.sign-in .alternate, .register .alternate, .new-entry .alternate {
+.sign-in .alternate, .register .alternate, .new-entry .alternate, .entry-success .alternate {
   background-color: #3d44d0;
   border-top: solid 2px #5D63DA;
   border-left: solid 2px #5D63DA;
   border-bottom: solid 2px #111898;
   border-right: solid 2px #111898; }
-.sign-in button:hover, .register button:hover, .new-entry button:hover {
+.sign-in button:hover, .register button:hover, .new-entry button:hover, .entry-success button:hover {
   background-color: #386E12; }
-.sign-in .alternate:hover, .register .alternate:hover, .new-entry .alternate:hover {
+.sign-in .alternate:hover, .register .alternate:hover, .new-entry .alternate:hover, .entry-success .alternate:hover {
   background-color: #1B24C7; }
-.sign-in .cancel, .register .cancel, .new-entry .cancel {
+.sign-in .cancel, .register .cancel, .new-entry .cancel, .entry-success .cancel {
   background-color: #97314c;
   border-top: solid 2px #BD5C76;
   border-left: solid 2px #BD5C76;
   border-bottom: solid 2px #4A0014;
   border-right: solid 2px #4A0014; }
-.sign-in .cancel:hover, .register .cancel:hover, .new-entry .cancel:hover {
+.sign-in .cancel:hover, .register .cancel:hover, .new-entry .cancel:hover, .entry-success .cancel:hover {
   background-color: #71122B; }
+.sign-in .medium, .register .medium, .new-entry .medium, .entry-success .medium {
+  width: 75%;
+  height: 85px; }
+
+.center-this {
+  text-align: center; }
 
 .user-home {
   margin: 0 auto; }
   .user-home .user-choices {
     width: 100%;
-    display: flex;
-    justify-content: space-around; }
+    display: inline;
+    text-align: center; }
 
 .big-square-button {
   height: 200px;
   margin: 0 auto;
-  width: 200px;
+  width: 49.7%;
   color: #d5a954;
   background-color: #5a9330;
   border-top: solid 2px #80B759;

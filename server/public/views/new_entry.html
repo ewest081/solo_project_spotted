@@ -32,9 +32,13 @@
     <h3>Date Spotted</h3>
     <!-- <label>Year: </label><input type="date" ng-model="data.date_spotted"/>
     <p>Or as much as you can remember:</p> -->
-    <label>Year: </label><input type="text" ng-model="data.year_spotted"/>
-    <label>Month: </label><input type="text" ng-model="data.month_spotted"/>
-    <label>Day: </label><input type="text" ng-model="data.day_spotted"/><br/>
+    <label>Year (yyyy): </label><input type="text" ng-model="data.year_spotted"/>
+    <label>Month (mm): </label><input type="text" ng-model="data.month_spotted"/>
+    <label>Day(dd): </label><input type="text" ng-model="data.day_spotted"/><br/>
+    <br />
+    <label>Time of day: </label><select ng-model="data.time_spotted">
+        <option ng-repeat="time in timeList">{{time}}</option>
+      </select>
   </div>
   <br />
 
@@ -70,7 +74,7 @@
         <input type="checkbox" ng-model="data.snowing" value="true"/> Snowing<br />
         <input type="checkbox" ng-model="data.foggy" value="true"/> Foggy<br />
         <input type="checkbox" ng-model="data.windy" value="true"/> Windy<br />
-        <input type="checkbox" ng-model="data.other" value="true"/> Other: <input type="text" ng-model="data.other_weather"/><br />
+        Other: <input type="text" ng-model="data.other_weather"/><br />
 
         <br />
       <label>Temperature (F˚): </label><select ng-model="data.temperature">
