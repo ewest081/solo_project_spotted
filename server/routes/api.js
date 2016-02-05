@@ -26,7 +26,7 @@ router.get('/getUser/:username', function(request, response){
 
       query.on('end', function(){
         client.end();
-        console.log(results);
+        // console.log(results);
         return response.json(results);
       });
     });
@@ -65,7 +65,6 @@ router.post('/registerUser', function(request, response){
 });
 
 router.post('/newEntry', function(request, response){
-  // console.log(request.query);
 
   var newEntry = {user_id: request.query.user_id,
                 username: request.query.username,
@@ -79,7 +78,7 @@ router.post('/newEntry', function(request, response){
                 year_spotted: request.query.year_spotted,
                 month_spotted: request.query.month_spotted,
                 day_spotted: request.query.day_spotted,
-                group: request.query.group,
+                is_group: request.query.group,
                 number_in_group: request.query.number_in_group,
                 individual_sex: request.query.sex,
                 individual_age: request.query.age,
@@ -97,7 +96,9 @@ router.post('/newEntry', function(request, response){
 
   pg.connect(connectionString, function(err, client){
 
-      var query = client.query('INSERT INTO entries (user_id, username, date_submitted, category, common_name, scientific_name, location_country, location_state, location_county, year_spotted, month_spotted, day_spotted, group, number_in_group, individual_sex, individual_age, individual_description, sunny, overcast, raining, snowing, foggy, windy,other_weather, temperature, additional_notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26)', [newEntry.user_id, newEntry.username, newEntry.date_submitted, newEntry.category, newEntry.common_name, newEntry.scientific_name, newEntry.location_country, newEntry.location_state, newEntry.location_county, newEntry.year_spotted, newEntry.month_spotted, newEntry.day_spotted, newEntry.group, newEntry.number_in_group, newEntry.individual_sex, newEntry.individual_age, newEntry.individual_description, newEntry.sunny, newEntry.overcast, newEntry.raining, newEntry.snowing, newEntry.foggy, newEntry.windy, newEntry.other_weather, newEntry.temperature, newEntry.additional_notes]);
+      var query = client.query('INSERT INTO entries (user_id, username, date_submitted, category, common_name, scientific_name, location_country, location_state, location_county, year_spotted, month_spotted, day_spotted, is_group, number_in_group, individual_sex, individual_age, individual_description, sunny, overcast, raining, snowing, foggy, windy,other_weather, temperature, additional_notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26)', [newEntry.user_id, newEntry.username, newEntry.date_submitted, newEntry.category, newEntry.common_name, newEntry.scientific_name, newEntry.location_country, newEntry.location_state, newEntry.location_county, newEntry.year_spotted, newEntry.month_spotted, newEntry.day_spotted, newEntry.is_group, newEntry.number_in_group, newEntry.individual_sex, newEntry.individual_age, newEntry.individual_description, newEntry.sunny, newEntry.overcast, newEntry.raining, newEntry.snowing, newEntry.foggy, newEntry.windy, newEntry.other_weather, newEntry.temperature, newEntry.additional_notes]);
+
+      console.log(query);
 
       query.on('end', function(){
           client.end();
