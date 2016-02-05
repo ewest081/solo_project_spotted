@@ -3,11 +3,13 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
             build: {
-              files: [{
-                expand: true,
-                src: 'client/*.js',
-                dest: 'server/public/assets/scripts'
-              }]
+              // files: [{
+                // expand: true,
+                // src: 'client/*.js',
+                src: 'client/client.js',
+                // dest: 'server/public/assets/scripts'
+                dest: 'server/public/assets/scripts/client.min.js'
+              // }]
             }
         },
         sass: {
@@ -19,7 +21,8 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['client/*.js'],
+                // files: ['client/*.js'],
+                files: ['client/client.js'],
                 tasks: ['uglify'],
                 options: {
                     spawn: false
