@@ -197,6 +197,28 @@ footer {
   }
 }
 
+
 .link-box:hover {
   background-color: #1B24C7;
+}
+
+.view-options {
+  margin: 0 auto;
+  width: 100%;
+  display: inline;
+  text-align: center;
+  .quarter-box {
+    margin: 5px auto;
+    width: 49.7%;
+    height: 100px;
+    color: #d5a954;
+    background-color: #5a9330;
+    border-top: solid 2px #80B759;
+    border-left: solid 2px #80B759;
+    border-bottom: solid 2px #1E4900;
+    border-right: solid 2px #1E4900;
+  }
+  .quarter-box:hover{
+    background-color: #386E12;
+  }
 }

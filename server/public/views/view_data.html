@@ -1,7 +1,34 @@
 <div class="view-data">
 
-  <h2>View Data</h2>
+  <h1>View Past Spottings!</h1>
 
-  
+  <div class="view-options">
+      <button class="quarter-box" ng-click="simpleListTog()"><h2>View Simple List</h2></button>
+      <button class="quarter-box" ng-click="sortTypeTog()"><h2>Sort by Data Type</h2></button>
+      <button class="quarter-box" ng-click="keywordTog()"><h2>Search by Keyword</h2></button>
+      <button class="quarter-box" ng-click="viewTableTog()"><h2>View Full Table</h2></button>
+  </div>
+
+
+          <!-- All the ng-shown stuff appears in "show-box" below: -->
+  <div class="show-box">
+
+    <div class="simple-list" ng-show="simpleList">
+      <h2>View Simple List</h2>
+    </div>
+
+    <div class="sort-type" ng-show="sortType">
+      <h2>Sprt by Data Type</h2>
+    </div>
+
+    <div class="keyword" ng-show="keyword">
+      <h2>Search by Keyword</h2>
+    </div>
+
+    <div class="view-table" ng-show="viewTable">
+      <h2>View Full Table</h2>
+    </div>
+
+  </div>
 
 </div>
