@@ -1,0 +1,1 @@
+app.factory("userData",["$http","$timeout",function(a,b){var c={username:"",id:""},d=function(a){c.username=a,changeNavLinks()},e=function(b){var d="/"+b;a.get("/api/getUser"+d).then(function(a){c.id=a.data.user.id})};return{currentUser:c,setUser:d,setUserID:e}}]);
