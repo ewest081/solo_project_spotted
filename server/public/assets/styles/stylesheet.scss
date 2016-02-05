@@ -221,4 +221,14 @@ footer {
   .quarter-box:hover{
     background-color: #386E12;
   }
+  .active {
+    background-color: #257054;
+    border-top: solid 2px #438A6F;
+    border-left: solid 2px #438A6F;
+    border-bottom: solid 2px #003722;
+    border-right: solid 2px #003722;
+  }
+  .active:hover {
+    background-color: #257054;
+  }
 }

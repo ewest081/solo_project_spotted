@@ -176,7 +176,10 @@ app.controller('FailController', ['$scope', function($scope){
   console.log("Ha ha!");
 }]);
 
-app.controller('ViewDataController', ['$scope', 'userData', function($scope, userData){
+app.controller('ViewDataController', ['$scope', 'userData', '$http', function($scope, userData, $http){
+  $scope.thisUser = userData.currentUser.username;
+  var userID = userData.currentUser.id;
+
   $scope.simpleList = false;
   $scope.sortType = false;
   $scope.keyword = false;
@@ -187,6 +190,7 @@ app.controller('ViewDataController', ['$scope', 'userData', function($scope, use
     $scope.sortType = false;
     $scope.keyword = false;
     $scope.viewTable = false;
+    $scope.getEntries(userID);
   };
   $scope.sortTypeTog = function(){
     $scope.sortType = true;
@@ -206,6 +210,23 @@ app.controller('ViewDataController', ['$scope', 'userData', function($scope, use
     $scope.keyword = false;
     $scope.simpleList = false;
   };
+
+  $scope.categorySelect = "All";
+  $scope.categories = ["All", "Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
+  $scope.entries = [];
+
+  $scope.getEntries = function(userID){
+    var params = '/' + userID;
+
+    $http.get('/api/getEntries' + params).then(function(response){
+      console.log(response.data);
+    });
+  };
+
+
+
+
+
 
 }]);
 

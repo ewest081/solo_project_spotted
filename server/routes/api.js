@@ -34,6 +34,28 @@ router.get('/getUser/:username', function(request, response){
 });
 
 
+router.get('/getEntries/:user_id', function(request, response){
+    var results = [];
+
+    pg.connect(connectionString, function(error, client){
+      if(error) console.log(error);
+      var query;
+      query = client.query('SELECT * FROM entries where user_id = $1', [request.params.user_id]);
+
+      query.on('row', function(row){
+        results.push(row);
+      });
+
+      query.on('end', function(){
+        client.end();
+        // console.log(results);
+        return response.json(results);
+      });
+    });
+
+});
+
+
 router.post('/registerUser', function(request, response){
   // console.log(request.query);
 

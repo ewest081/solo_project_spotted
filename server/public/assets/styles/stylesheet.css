@@ -171,5 +171,13 @@ footer {
     border-right: solid 2px #1E4900; }
   .view-options .quarter-box:hover {
     background-color: #386E12; }
+  .view-options .active {
+    background-color: #257054;
+    border-top: solid 2px #438A6F;
+    border-left: solid 2px #438A6F;
+    border-bottom: solid 2px #003722;
+    border-right: solid 2px #003722; }
+  .view-options .active:hover {
+    background-color: #257054; }
 
 /*# sourceMappingURL=stylesheet.css.map */

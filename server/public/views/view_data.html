@@ -3,28 +3,53 @@
   <h1>View Past Spottings!</h1>
 
   <div class="view-options">
-      <button class="quarter-box" ng-click="simpleListTog()"><h2>View Simple List</h2></button>
-      <button class="quarter-box" ng-click="sortTypeTog()"><h2>Sort by Data Type</h2></button>
-      <button class="quarter-box" ng-click="keywordTog()"><h2>Search by Keyword</h2></button>
-      <button class="quarter-box" ng-click="viewTableTog()"><h2>View Full Table</h2></button>
+      <button class="quarter-box" ng-class="{'active': simpleList}" ng-click="simpleListTog()"><h2>View Simple List</h2></button>
+
+      <button class="quarter-box" ng-class="{'active': sortType}" ng-click="sortTypeTog()"><h2>Sort by Data Type</h2></button>
+
+      <button class="quarter-box" ng-class="{'active': keyword}" ng-click="keywordTog()"><h2>Search by Keyword</h2></button>
+
+      <button class="quarter-box" ng-class="{'active': viewTable}" ng-click="viewTableTog()"><h2>View Full Table</h2></button>
   </div>
 
 
           <!-- All the ng-shown stuff appears in "show-box" below: -->
   <div class="show-box">
 
+
+                    <!-- Simple List -->
     <div class="simple-list" ng-show="simpleList">
       <h2>View Simple List</h2>
+
+      <div class="entry-box" ng-show="data.group == 'individual'">
+        <label>View by Category:</label><select ng-model="categorySelect">
+            <option ng-repeat="category in categories">{{category}}</option>
+          </select>
+      </div>
+
+      <div class="single-entry" ng-repeat="entry in entries">
+        <h4>{{entry.common_name}}</h4>
+      </div>
+
     </div>
 
+
+
+                    <!-- Sort Type -->
     <div class="sort-type" ng-show="sortType">
       <h2>Sprt by Data Type</h2>
     </div>
 
+
+
+                    <!-- Keyword -->
     <div class="keyword" ng-show="keyword">
       <h2>Search by Keyword</h2>
     </div>
 
+
+
+                    <!-- Show Table -->
     <div class="view-table" ng-show="viewTable">
       <h2>View Full Table</h2>
     </div>
