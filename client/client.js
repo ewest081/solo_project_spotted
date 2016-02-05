@@ -106,6 +106,7 @@ app.controller('SignInController', ['$scope', '$http', '$location', 'userData', 
   $scope.submitData = function(){
     $http.post('/', $scope.data).then(function(response){
       userData.setUser($scope.data.username);
+      userData.setUserID($scope.data.username);
       $location.path(response.data);
     });
   };
@@ -147,10 +148,13 @@ app.controller('GuestController', ['$scope', function($scope){
 
 
 app.controller('UserController', ['$scope', 'userData', function($scope, userData){
-    // console.log('hi:', userData.currentUser.username);
-    $scope.thisUser = userData.currentUser.username;
 
+    $scope.thisUser = userData.currentUser.username;
     $scope.welcome = "Welcome, " + $scope.thisUser + "!";
+
+    $scope.getID = function(){
+      console.log('Hi:', userData.currentUser.id);
+    };
 }]);
 
 
@@ -209,7 +213,8 @@ app.controller('FailController', ['$scope', function($scope){
 app.factory('userData', ['$http', '$rootScope', '$timeout', function($http, $rootScope, $timeout){
 
   var currentUser = {
-    username: ''
+    username: '',
+    id: ''
   };
 
   var setUser = function(username){
@@ -217,9 +222,18 @@ app.factory('userData', ['$http', '$rootScope', '$timeout', function($http, $roo
     changeNavLinks();
   };
 
+  var setUserID = function(username){
+      var params = '/' + username;
+
+      $http.get('/api/getUser' + params).then(function(response){
+          currentUser.id = response.data.user.id;
+      });
+  };
+
   return {
     currentUser: currentUser,
-    setUser: setUser
+    setUser: setUser,
+    setUserID: setUserID
   };
 
 }]);

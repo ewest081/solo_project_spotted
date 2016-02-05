@@ -1,9 +1,9 @@
-<h2>Log a new Spotting!</h2>
+<h1>Log a new Spotting!</h1>
 
 
 <div class="new-entry">
   <div class="entry-box">
-    <h4>General</h4>
+    <h2>General</h2>
     <label>Category: </label><select ng-model="data.category">
       <option ng-repeat="category in categories">{{category}}</option>
     </select><br/>
@@ -21,15 +21,15 @@
   <br />
 
   <div class="entry-box">
-    <h4>Location</h4>
-    <label>Country: </label><input type="text" ng-model="data.location_country"/>
-    <label>State/Province: </label><input type="text" ng-model="data.location_state"/>
+    <h3>Location</h3>
+    <label>Country: </label><input type="text" ng-model="data.location_country"/><br/>
+    <label>State/Province: </label><input type="text" ng-model="data.location_state"/><br/>
     <label>County/Parish: </label><input type="text" ng-model="data.location_county"/><br/>
   </div>
   <br />
 
   <div class="entry-box">
-    <h4>Date Spotted</h4>
+    <h3>Date Spotted</h3>
     <label>Year: </label><input type="date" ng-model="data.date_spotted"/>
     <p>Or as much as you can remember:</p>
     <label>Year: </label><input type="text" ng-model="data.year_spotted"/>
@@ -39,16 +39,15 @@
   <br />
 
   <div class="entry-box">
-    <label><h4>Individual or Group?</h4></label>
+    <label><h3>Individual or Group?</h3></label>
       <input type="radio" ng-model="data.group" value="group"/>Group<br/>
       <input type="radio" ng-model="data.group" value="individual"/>Individual<br/>
   </div>
   <br />
   <!-- Toggle Show -->
         <div class="entry-box" ng-show="data.group == 'group'">
-          <label>Estimated number in group: </label><input type="text" ng-model="data.number_in_group"/><br/>
+          <label>Estimated number in group: </label><input type="text" ng-model="data.number_in_group"/>
         </div>
-        <br />
 
         <div class="entry-box" ng-show="data.group == 'individual'">
           <label>Sex:</label><select ng-model="data.sex">
@@ -59,11 +58,10 @@
             </select>
           <label>Individual Description: </label><input type="text" ng-model="data.individual_description"/><br/>
         </div>
-        <br />
   <!-- Toggle Show -->
 
     <div class="entry-box">
-      <h2>Weather Conditions</h2>
+      <h3>Weather Conditions</h3>
       <label>Atmospheric: </label>
       <br />
         <input type="checkbox" ng-model="data.sunny" value="true"/> Sunny<br />
@@ -75,21 +73,24 @@
         <input type="checkbox" ng-model="data.other" value="true"/> Other: <input type="text" ng-model="data.other_weather"/><br />
 
         <br />
-      <label>Temperature (degrees F): </label><select ng-model="data.temperature">
+      <label>Temperature (F˚): </label><select ng-model="data.temperature">
         <option ng-repeat="temp in tempList">{{temp}}</option>
       </select><br/>
     </div>
     <br />
 
-    <div class="big-entry-box">
-      <label>Additional Notes: </label><input type="text" ng-model="data.additional_notes"/><br/>
+    <div class="entry-box">
+      <label><h3>Additional Notes: </h3></label>
+      <!-- <input type="text" ng-model="data.additional_notes"/><br/> -->
+      <textarea rows="4" cols="50" ng-model="data.additional_notes"/></textarea>
     </div>
-    <br />
+    <br /><br />
 
 
   <div>
-    <a href="/user_home"><button class="cancel">Cancel</button></a>
     <button ng-click="submitEntry()">Submit</button><br/>
+    <br />
+    <a href="/success"><button class="cancel">Cancel</button></a>
   </div>
 
 </div>

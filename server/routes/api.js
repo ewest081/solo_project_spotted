@@ -12,6 +12,28 @@ var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/sp
 //              API Routes
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 
+router.get('/getUser/:username', function(request, response){
+    var results = {'user': ''};
+
+    pg.connect(connectionString, function(error, client){
+      if(error) console.log(error);
+      var query;
+      query = client.query('SELECT * FROM users where username = $1', [request.params.username]);
+
+      query.on('row', function(row){
+        results.user = row;
+      });
+
+      query.on('end', function(){
+        client.end();
+        console.log(results);
+        return response.json(results);
+      });
+    });
+
+});
+
+
 router.post('/registerUser', function(request, response){
   // console.log(request.query);
 
