@@ -170,7 +170,7 @@ app.controller('ViewDataController', ['$scope', 'userData', function($scope, use
 
 
 
-app.controller('NewEntryController', ['$scope', 'userData', function($scope, userData){
+app.controller('NewEntryController', ['$scope', '$http', 'userData', function($scope, $http, userData){
   $scope.data = {};
 
   $scope.categories = ["Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
@@ -180,15 +180,42 @@ app.controller('NewEntryController', ['$scope', 'userData', function($scope, use
   // $scope.weatherList = ["Sunny", "Overcast", "Raining", "Snowing", "Foggy", "Windy", "Other"];
 
   var username = userData.currentUser.username;
+  var userID = userData.currentUser.id;
+  var date = Date.now();
+
+  var newEntry = {user_id: userID,
+          username: username,
+          date_submitted: date,
+          category: $scope.data.category,
+          common_name: $scope.data.common_name,
+          scientific_name: $scope.data.scientific_name,
+          location_country: $scope.data.location_country,
+          location_state: $scope.data.location_state,
+          location_county: $scope.data.location_county,
+          year_spotted: $scope.data.year_spotted,
+          month_spotted: $scope.data.month_spotted,
+          day_spotted: $scope.data.day_spotted,
+          group: $scope.data.group,
+          number_in_group: $scope.data.number_in_group,
+          individual_sex: $scope.data.sex,
+          individual_age: $scope.data.age,
+          individual_description: $scope.data.individual_description,
+          sunny: $scope.data.sunny,
+          overcast: $scope.data.overcast,
+          raining: $scope.data.raining,
+          snowing: $scope.data.snowing,
+          foggy: $scope.data.foggy,
+          windy: $scope.data.windy,
+          other_weather: $scope.data.other_weather,
+          temperature: $scope.data.temperature,
+          additional_notes: $scope.data.additional_notes
+  };
 
   $scope.submitEntry = function(){
     $http({
       url: '/api/newEntry',
       method: 'POST',
-      params: {
-        //Send ALL the Data!
-        //don't forget to send userID and date submitted
-      }
+      params: newEntry
     }).then(function(response){
         console.log(response.data);
       });
@@ -210,7 +237,7 @@ app.controller('FailController', ['$scope', function($scope){
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 //              App Factories
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
-app.factory('userData', ['$http', '$rootScope', '$timeout', function($http, $rootScope, $timeout){
+app.factory('userData', ['$http', '$timeout', function($http, $timeout){
 
   var currentUser = {
     username: '',

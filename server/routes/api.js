@@ -67,17 +67,41 @@ router.post('/registerUser', function(request, response){
 router.post('/newEntry', function(request, response){
   // console.log(request.query);
 
-  var newUser = {username: request.query.username,
-
+  var newEntry = {user_id: request.query.user_id,
+                username: request.query.username,
+                date_submitted: request.query.date_submitted,
+                category: request.query.category,
+                common_name: request.query.common_name,
+                scientific_name: request.query.scientific_name,
+                location_country: request.query.location_country,
+                location_state: request.query.location_state,
+                location_county: request.query.location_county,
+                year_spotted: request.query.year_spotted,
+                month_spotted: request.query.month_spotted,
+                day_spotted: request.query.day_spotted,
+                group: request.query.group,
+                number_in_group: request.query.number_in_group,
+                individual_sex: request.query.sex,
+                individual_age: request.query.age,
+                individual_description: request.query.individual_description,
+                sunny: request.query.sunny,
+                overcast: request.query.overcast,
+                raining: request.query.raining,
+                snowing: request.query.snowing,
+                foggy: request.query.foggy,
+                windy: request.query.windy,
+                other_weather: request.query.other_weather,
+                temperature: request.query.temperature,
+                additional_notes: request.query.additional_notes
               };
 
   pg.connect(connectionString, function(err, client){
 
-      // var query = client.query('INSERT INTO users (username, password, first_name, last_name, email) VALUES ($1, $2, $3, $4, $5)', [newUser.username, newUser.password, newUser.first_name, newUser.last_name, newUser.email]);
+      var query = client.query('INSERT INTO entries (user_id, username, date_submitted, category, common_name, scientific_name, location_country, location_state, location_county, year_spotted, month_spotted, day_spotted, group, number_in_group, individual_sex, individual_age, individual_description, sunny, overcast, raining, snowing, foggy, windy,other_weather, temperature, additional_notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26)', [newEntry.user_id, newEntry.username, newEntry.date_submitted, newEntry.category, newEntry.common_name, newEntry.scientific_name, newEntry.location_country, newEntry.location_state, newEntry.location_county, newEntry.year_spotted, newEntry.month_spotted, newEntry.day_spotted, newEntry.group, newEntry.number_in_group, newEntry.individual_sex, newEntry.individual_age, newEntry.individual_description, newEntry.sunny, newEntry.overcast, newEntry.raining, newEntry.snowing, newEntry.foggy, newEntry.windy, newEntry.other_weather, newEntry.temperature, newEntry.additional_notes]);
 
       query.on('end', function(){
           client.end();
-          response.send('Successful Entry Made!');
+          return response.send('Successful Entry Made?');
       });
 
       if(err) {
