@@ -186,11 +186,10 @@ app.controller('ViewDataController', ['$scope', 'userData', '$http', function($s
   $scope.viewTable = false;
 
   $scope.simpleListTog = function(){
-    $scope.simpleList = true;
+    $scope.simpleList = $scope.simpleList === true ? false: true;
     $scope.sortType = false;
     $scope.keyword = false;
     $scope.viewTable = false;
-    $scope.getEntries(userID);
   };
   $scope.sortTypeTog = function(){
     $scope.sortType = true;
@@ -199,13 +198,13 @@ app.controller('ViewDataController', ['$scope', 'userData', '$http', function($s
     $scope.simpleList = false;
   };
   $scope.keywordTog = function(){
-    $scope.keyword = true;
+    $scope.keyword = $scope.keyword === true ? false: true;
     $scope.sortType = false;
     $scope.simpleList = false;
     $scope.viewTable = false;
   };
   $scope.viewTableTog = function(){
-    $scope.viewTable = true;
+    $scope.viewTable = $scope.viewTable === true ? false: true;
     $scope.sortType = false;
     $scope.keyword = false;
     $scope.simpleList = false;
@@ -215,13 +214,29 @@ app.controller('ViewDataController', ['$scope', 'userData', '$http', function($s
   $scope.categories = ["All", "Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
   $scope.entries = [];
 
-  $scope.getEntries = function(userID){
-    var params = '/' + userID;
+  $scope.getSimpleList = function(){
+    var category = $scope.categorySelect;
 
-    $http.get('/api/getEntries' + params).then(function(response){
-      console.log(response.data);
-    });
+    if($scope.categorySelect == "All"){
+      category = null;
+    }else{
+      category = $scope.categorySelect;
+    }
+
+    $http({
+      url: '/api/getSimpleList',
+      method: 'GET',
+      params: {user_id: userID,
+              category: category
+              }
+    }).then(function(response){
+        $scope.entries = response.data;
+        console.log(response.data);
+      });
+
+
   };
+
 
 
 

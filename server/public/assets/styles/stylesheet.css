@@ -78,13 +78,13 @@ footer {
 .nav:hover {
   color: #FBD488; }
 
-.sign-in .sign-in-box, .register .sign-in-box, .new-entry .sign-in-box, .entry-success .sign-in-box {
+.sign-in .sign-in-box, .register .sign-in-box, .new-entry .sign-in-box, .entry-success .sign-in-box, .view-data .sign-in-box {
   width: 200px;
   display: flex;
   justify-content: space-between; }
-  .sign-in .sign-in-box input, .register .sign-in-box input, .new-entry .sign-in-box input, .entry-success .sign-in-box input {
+  .sign-in .sign-in-box input, .register .sign-in-box input, .new-entry .sign-in-box input, .entry-success .sign-in-box input, .view-data .sign-in-box input {
     width: 100px; }
-.sign-in button, .register button, .new-entry button, .entry-success button {
+.sign-in button, .register button, .new-entry button, .entry-success button, .view-data button {
   width: 200px;
   margin: 0 0 10px 0;
   background-color: #5a9330;
@@ -93,25 +93,25 @@ footer {
   border-left: solid 2px #80B759;
   border-bottom: solid 2px #1E4900;
   border-right: solid 2px #1E4900; }
-.sign-in .alternate, .register .alternate, .new-entry .alternate, .entry-success .alternate {
+.sign-in .alternate, .register .alternate, .new-entry .alternate, .entry-success .alternate, .view-data .alternate {
   background-color: #3d44d0;
   border-top: solid 2px #5D63DA;
   border-left: solid 2px #5D63DA;
   border-bottom: solid 2px #111898;
   border-right: solid 2px #111898; }
-.sign-in button:hover, .register button:hover, .new-entry button:hover, .entry-success button:hover {
+.sign-in button:hover, .register button:hover, .new-entry button:hover, .entry-success button:hover, .view-data button:hover {
   background-color: #386E12; }
-.sign-in .alternate:hover, .register .alternate:hover, .new-entry .alternate:hover, .entry-success .alternate:hover {
+.sign-in .alternate:hover, .register .alternate:hover, .new-entry .alternate:hover, .entry-success .alternate:hover, .view-data .alternate:hover {
   background-color: #1B24C7; }
-.sign-in .cancel, .register .cancel, .new-entry .cancel, .entry-success .cancel {
+.sign-in .cancel, .register .cancel, .new-entry .cancel, .entry-success .cancel, .view-data .cancel {
   background-color: #97314c;
   border-top: solid 2px #BD5C76;
   border-left: solid 2px #BD5C76;
   border-bottom: solid 2px #4A0014;
   border-right: solid 2px #4A0014; }
-.sign-in .cancel:hover, .register .cancel:hover, .new-entry .cancel:hover, .entry-success .cancel:hover {
+.sign-in .cancel:hover, .register .cancel:hover, .new-entry .cancel:hover, .entry-success .cancel:hover, .view-data .cancel:hover {
   background-color: #71122B; }
-.sign-in .medium, .register .medium, .new-entry .medium, .entry-success .medium {
+.sign-in .medium, .register .medium, .new-entry .medium, .entry-success .medium, .view-data .medium {
   width: 75%;
   height: 85px; }
 
@@ -179,5 +179,20 @@ footer {
     border-right: solid 2px #003722; }
   .view-options .active:hover {
     background-color: #257054; }
+
+.simple-list {
+  width: 100%; }
+  .simple-list .simple-box {
+    margin: 0 auto;
+    width: 100%;
+    display: inline; }
+    .simple-list .simple-box .single-entry {
+      color: #3d44d0;
+      margin: 5px;
+      width: 48.9%;
+      height: 60px;
+      background-color: #efefef;
+      border: solid 1px #1f1f1f;
+      padding: 5px; }
 
 /*# sourceMappingURL=stylesheet.css.map */

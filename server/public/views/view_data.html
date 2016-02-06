@@ -1,6 +1,5 @@
 <div class="view-data">
 
-  <h1>View Past Spottings!</h1>
 
   <div class="view-options">
       <button class="quarter-box" ng-class="{'active': simpleList}" ng-click="simpleListTog()"><h2>View Simple List</h2></button>
@@ -18,42 +17,49 @@
 
 
                     <!-- Simple List -->
-    <div class="simple-list" ng-show="simpleList">
-      <h2>View Simple List</h2>
+      <div class="simple-list" ng-show="simpleList">
+        <h2>View Simple List</h2>
 
-      <div class="entry-box" ng-show="data.group == 'individual'">
-        <label>View by Category:</label><select ng-model="categorySelect">
-            <option ng-repeat="category in categories">{{category}}</option>
-          </select>
+        <div class="entry-box">
+          <label>View by Category: </label><select ng-model="categorySelect">
+              <option ng-repeat="category in categories">{{category}}</option>
+            </select>
+            <br /><br />
+        </div>
+
+        <button ng-click="getSimpleList()">Show me my list!</button>
+        <br /><br />
+
+        <div class="simple-box">
+          <button class="single-entry" ng-repeat="entry in entries">
+            <h3>{{entry.common_name}}</h3>
+          </button>
+        </div>
       </div>
 
-      <div class="single-entry" ng-repeat="entry in entries">
-        <h4>{{entry.common_name}}</h4>
+
+
+                      <!-- Sort Type -->
+      <div class="sort-type" ng-show="sortType">
+        <h2>Sort by Data Type</h2>
+        <p>
+          More stuff to type here.
+        </p>
       </div>
 
-    </div>
+
+
+                      <!-- Keyword -->
+      <div class="keyword" ng-show="keyword">
+        <h2>Search by Keyword</h2>
+      </div>
 
 
 
-                    <!-- Sort Type -->
-    <div class="sort-type" ng-show="sortType">
-      <h2>Sprt by Data Type</h2>
-    </div>
-
-
-
-                    <!-- Keyword -->
-    <div class="keyword" ng-show="keyword">
-      <h2>Search by Keyword</h2>
-    </div>
-
-
-
-                    <!-- Show Table -->
-    <div class="view-table" ng-show="viewTable">
-      <h2>View Full Table</h2>
-    </div>
+                      <!-- Show Table -->
+      <div class="view-table" ng-show="viewTable">
+        <h2>View Full Table</h2>
+      </div>
 
   </div>
-
 </div>
