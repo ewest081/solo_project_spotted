@@ -114,12 +114,15 @@ footer {
 .sign-in .medium, .register .medium, .new-entry .medium, .entry-success .medium, .view-data .medium {
   width: 75%;
   height: 85px; }
+.sign-in .tiny, .register .tiny, .new-entry .tiny, .entry-success .tiny, .view-data .tiny {
+  width: 80px; }
 
 .center-this {
   text-align: center; }
 
 .user-home {
-  margin: 0 auto; }
+  margin: 0 auto;
+  width: 80%; }
   .user-home .user-choices {
     width: 100%;
     display: inline;
@@ -181,18 +184,17 @@ footer {
     background-color: #257054; }
 
 .simple-list {
-  width: 100%; }
-  .simple-list .simple-box {
-    margin: 0 auto;
-    width: 100%;
-    display: inline; }
-    .simple-list .simple-box .single-entry {
-      color: #3d44d0;
-      margin: 5px;
-      width: 48.9%;
-      height: 60px;
-      background-color: #efefef;
-      border: solid 1px #1f1f1f;
-      padding: 5px; }
+  margin: 0 auto;
+  width: 100%;
+  display: inline; }
+
+.single-entry {
+  color: #3d44d0;
+  margin: 5px;
+  width: 48.9%;
+  height: 100px;
+  background-color: #efefef;
+  border: solid 1px #1f1f1f;
+  padding: 5px; }
 
 /*# sourceMappingURL=stylesheet.css.map */

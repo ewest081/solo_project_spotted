@@ -231,12 +231,13 @@ app.controller('ViewDataController', ['$scope', 'userData', '$http', function($s
               }
     }).then(function(response){
         $scope.entries = response.data;
-        console.log(response.data);
+        // console.log(response.data);
       });
-
-
   };
 
+  $scope.viewEntry = function(){
+    console.log('Meow');
+  };
 
 
 

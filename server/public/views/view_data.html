@@ -30,11 +30,12 @@
         <button ng-click="getSimpleList()">Show me my list!</button>
         <br /><br />
 
-        <div class="simple-box">
-          <button class="single-entry" ng-repeat="entry in entries">
+        <!-- <div class="simple-box"> -->
+          <div class="single-entry" ng-repeat="entry in entries">
             <h3>{{entry.common_name}}</h3>
-          </button>
-        </div>
+            <button class="tiny" ng-click="viewEntry()">View/Edit</button>
+          </div>
+        <!-- </div> -->
       </div>
 
 

@@ -151,6 +151,9 @@ footer {
     width: 75%;
     height: 85px;
   }
+  .tiny {
+    width: 80px;
+  }
 }
 
 .center-this {
@@ -159,6 +162,7 @@ footer {
 
 .user-home {
   margin: 0 auto;
+  width: 80%;
   .user-choices {
     width: 100%;
     display: inline;
@@ -233,20 +237,19 @@ footer {
   }
 }
 
+
 .simple-list {
+  margin: 0 auto;
   width: 100%;
-  .simple-box {
-    margin: 0 auto;
-    width: 100%;
-    display: inline;
-    .single-entry {
-      color: #3d44d0;
-      margin: 5px;
-      width: 48.9%;
-      height: 60px;
-      background-color: #efefef;
-      border: solid 1px #1f1f1f;
-      padding: 5px;
-    }
-  }
+  display: inline;
+}
+
+.single-entry {
+  color: #3d44d0;
+  margin: 5px;
+  width: 48.9%;
+  height: 100px;
+  background-color: #efefef;
+  border: solid 1px #1f1f1f;
+  padding: 5px;
 }
