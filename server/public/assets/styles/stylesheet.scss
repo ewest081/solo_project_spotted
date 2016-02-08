@@ -174,7 +174,7 @@ footer {
 .big-square-button {
   height: 200px;
   margin: 0 auto;
-  width: 49.7%;
+  width: 49.6%;
   color: #d5a954;
   background-color: #5a9330;
   border-top: solid 2px #80B759;
@@ -256,4 +256,19 @@ footer {
   background-color: #efefef;
   border: solid 1px #1f1f1f;
   padding: 5px;
+}
+
+.ugly-table {
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+table, th, td {
+  width: 100%;
+  white-space: nowrap;
+  border: solid 1px #3d44d0;
+  table tr:nth-child(odd){
+    background-color: #a8a8a8;
+  }
 }

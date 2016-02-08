@@ -8,7 +8,7 @@
 
       <button class="quarter-box" ng-class="{'active': keyword}" ng-click="keywordTog()"><h2>Search by Keyword</h2></button>
 
-      <button class="quarter-box" ng-class="{'active': viewTable}" ng-click="viewTableTog()"><h2>View Full Table</h2></button>
+      <button class="quarter-box" ng-class="{'active': viewTable}" ng-click="viewTableTog(); getTableData()"><h2>View Full Table</h2></button>
   </div>
 
 
@@ -32,10 +32,13 @@
         <!-- <div class="simple-box"> -->
           <div class="single-entry" ng-repeat="entry in entries">
             <h3>{{entry.common_name}}</h3>
-
+            <p>{{entry.scientific_name}}</p>
             <div class="simple-expanded" ng-show="entry.show">
               <p>Day: {{entry.day_spotted}} Month: {{entry.month_spotted}} Year: {{entry.year_spotted}}</p>
               <p>Location: {{entry.location_country}} {{entry.location_state}} {{entry.location_county}}</p>
+              <p>{{entry.individual_sex}}</p>
+              <p>{{entry.individual_age}}</p>
+              <p>{{entry.additional_notes}}</p>
               <button class="tiny cancel" ng-click="editEntry(entry)">Edit</button>
             </div>
 
@@ -67,6 +70,49 @@
                       <!-- Show Table -->
       <div class="view-table" ng-show="viewTable">
         <h2>View Full Table</h2>
+
+        <div class="ugly-table">
+          <table>
+            <th>
+              <td>Category</td>
+              <td>Common Name</td>
+              <td>Scientific Name</td>
+              <td>Country</td>
+              <td>State/Province</td>
+              <td>County</td>
+              <td>Year</td>
+              <td>Month</td>
+              <td>Day</td>
+              <td>Time</td>
+              <td>Group/Indv</td>
+              <td># in Group</td>
+              <td>Sex</td>
+              <td>Age</td>
+              <td>Temperature</td>
+              <td>Additional Notes</td>
+            </th>
+            <tr ng-repeat="entry in entries">
+              <td>{{entry.id}}</td>
+              <td>{{entry.category}}</td>
+              <td>{{entry.common_name}}</td>
+              <td>{{entry.scientific_name}}</td>
+              <td>{{entry.location_country}}</td>
+              <td>{{entry.location_state}}</td>
+              <td>{{entry.location_county}}</td>
+              <td>{{entry.year_spotted}}</td>
+              <td>{{entry.month_spotted}}</td>
+              <td>{{entry.day_spotted}}</td>
+              <td>{{entry.time_spotted}}</td>
+              <td>{{entry.is_group}}</td>
+              <td>{{entry.number_in_group}}</td>
+              <td>{{entry.individual_sex}}</td>
+              <td>{{entry.individual_age}}</td>
+              <td>{{entry.temperature}}</td>
+              <td>{{entry.additional_notes}}</td>
+              <td><button class="tiny" ng-click="editEntry(entry)">Edit</button></td>
+            </tr>
+          </table>
+        </div>
       </div>
 
   </div>

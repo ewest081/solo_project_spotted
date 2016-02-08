@@ -53,7 +53,27 @@ router.get('/getSimpleList', function(request, response){
         return response.json(results);
       });
     });
+});
 
+router.get('/getTableData', function(request, response){
+    var results = [];
+    // console.log(request.query);
+
+    pg.connect(connectionString, function(error, client){
+      if(error) console.log(error);
+      var query;
+      query = client.query('SELECT * FROM entries WHERE user_id = $1 ORDER BY id', [request.query.user_id]);
+
+      query.on('row', function(row){
+        results.push(row);
+      });
+
+      query.on('end', function(){
+        client.end();
+        // console.log(results);
+        return response.json(results);
+      });
+    });
 });
 
 

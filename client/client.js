@@ -204,24 +204,28 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     $scope.sortType = false;
     $scope.keyword = false;
     $scope.viewTable = false;
+    $scope.entries = [];
   };
   $scope.sortTypeTog = function(){
     $scope.sortType = true;
     $scope.keyword = false;
     $scope.viewTable = false;
     $scope.simpleList = false;
+    $scope.entries = [];
   };
   $scope.keywordTog = function(){
     $scope.keyword = $scope.keyword === true ? false: true;
     $scope.sortType = false;
     $scope.simpleList = false;
     $scope.viewTable = false;
+    $scope.entries = [];
   };
   $scope.viewTableTog = function(){
     $scope.viewTable = $scope.viewTable === true ? false: true;
     $scope.sortType = false;
     $scope.keyword = false;
     $scope.simpleList = false;
+    $scope.entries = [];
   };
 
   $scope.categorySelect = "All";
@@ -246,14 +250,22 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
               category: category
               }
     }).then(function(response){
-
         for(i = 0; i < response.data.length; i++){
           response.data[i].show = false;
           response.data[i].view = "View More";
         }
-
         $scope.entries = response.data;
+      });
+  };
 
+  $scope.getTableData = function(){
+    $http({
+      url: '/api/getTableData',
+      method: 'GET',
+      params: {user_id: userID
+              }
+    }).then(function(response){
+        $scope.entries = response.data;
       });
   };
 
