@@ -41,7 +41,7 @@ router.get('/getSimpleList', function(request, response){
     pg.connect(connectionString, function(error, client){
       if(error) console.log(error);
       var query;
-      query = client.query('SELECT * FROM entries WHERE user_id = $1 EXCEPT SELECT * FROM entries WHERE category != $2', [request.query.user_id, request.query.category]);
+      query = client.query('SELECT * FROM entries WHERE user_id = $1 EXCEPT SELECT * FROM entries WHERE category != $2 ORDER BY common_name', [request.query.user_id, request.query.category]);
 
       query.on('row', function(row){
         results.push(row);

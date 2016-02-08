@@ -185,14 +185,16 @@ footer {
 
 .simple-list {
   margin: 0 auto;
-  width: 100%;
+  width: 80%;
+  display: inline; }
+
+.entry-box {
   display: inline; }
 
 .single-entry {
   color: #3d44d0;
   margin: 5px;
-  width: 48.9%;
-  height: 100px;
+  width: 98%;
   background-color: #efefef;
   border: solid 1px #1f1f1f;
   padding: 5px; }

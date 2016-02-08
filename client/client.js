@@ -212,6 +212,8 @@ app.controller('ViewDataController', ['$scope', 'userData', '$http', function($s
 
   $scope.categorySelect = "All";
   $scope.categories = ["All", "Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
+  $scope.view = "View More";
+
   $scope.entries = [];
 
   $scope.getSimpleList = function(){
@@ -230,13 +232,25 @@ app.controller('ViewDataController', ['$scope', 'userData', '$http', function($s
               category: category
               }
     }).then(function(response){
+
+        for(i = 0; i < response.data.length; i++){
+          response.data[i].show = false;
+          response.data[i].view = "View More";
+        }
+
         $scope.entries = response.data;
-        // console.log(response.data);
+
       });
   };
 
-  $scope.viewEntry = function(){
-    console.log('Meow');
+  $scope.viewEntry = function(entry){
+    entry.show = entry.show === true ? false: true;
+
+    if(entry.view == "View More"){
+      entry.view = "View Less";
+    }else{
+      entry.view = "View More";
+    }
   };
 
 
