@@ -59,6 +59,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
           templateUrl: 'views/entry_success.html',
           controller: 'EntrySuccessController',
         })
+        .when('/update_success', {
+          templateUrl: 'views/update_success.html',
+          controller: 'UpdateSucessController',
+        })
         .when('/edit_entry', {
           templateUrl: 'views/edit_entry.html',
           controller: 'EditEntryController',
@@ -171,6 +175,11 @@ app.controller('EntrySuccessController', ['$scope', 'userData', function($scope,
 }]);
 
 
+app.controller('UpdateSucessController', ['$scope', 'userData', function($scope, userData){
+
+}]);
+
+
 app.controller('LogOutController', ['$scope', 'userData', function($scope, userData){
   $scope.warning = "Are you sure you want to log out, " + userData.currentUser.username + "?";
 }]);
@@ -268,8 +277,62 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
 
 
 app.controller('EditEntryController', ['$scope', '$http', '$location', 'userData', 'currentEntry', function($scope, $http, $location, userData, currentEntry){
-  $scope.currentEntry = currentEntry;
-  console.log($scope.currentEntry);
+  $scope.data = currentEntry.currentEntry.data;
+  // console.log($scope.data);
+
+  $scope.timeList = ["Dawn", "Morning", "Mid Day", "Afternoon", "Dusk", "Night"];
+  $scope.categories = ["Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
+  $scope.sexList = ["Female", "Male", "Unknown"];
+  $scope.ageList = ["Adult", "Juvenile", "Neonate"];
+  $scope.tempList = ["0˚<", "0˚ - 15˚", "16˚ - 32˚", "33˚ - 49˚", "50˚ - 69˚", "70˚ - 89˚", ">90˚"];
+
+  var username = userData.currentUser.username;
+  var userID = userData.currentUser.id;
+  // var date = Date.now();
+  var date;
+
+  $scope.updateEntry = function(){
+    // console.log($scope.data);
+    $http({
+      url: '/api/updateEntry',
+      method: 'POST',
+      params: {user_id: userID,
+              username: username,
+              date_updated: date,
+              category: $scope.data.category,
+              common_name: $scope.data.common_name,
+              scientific_name: $scope.data.scientific_name,
+              location_country: $scope.data.location_country,
+              location_state: $scope.data.location_state,
+              location_county: $scope.data.location_county,
+              year_spotted: $scope.data.year_spotted,
+              month_spotted: $scope.data.month_spotted,
+              day_spotted: $scope.data.day_spotted,
+              time_spotted: $scope.data.time_spotted,
+              group: $scope.data.group,
+              number_in_group: $scope.data.number_in_group,
+              individual_sex: $scope.data.sex,
+              individual_age: $scope.data.age,
+              individual_description: $scope.data.individual_description,
+              sunny: $scope.data.sunny,
+              overcast: $scope.data.overcast,
+              raining: $scope.data.raining,
+              snowing: $scope.data.snowing,
+              foggy: $scope.data.foggy,
+              windy: $scope.data.windy,
+              other_weather: $scope.data.other_weather,
+              temperature: $scope.data.temperature,
+              additional_notes: $scope.data.additional_notes,
+              id: $scope.data.id
+      }
+    }).then(function(response){
+        $location.path(response.data);
+        //clear curent entry
+      });
+  };
+
+
+
 
 }]);
 

@@ -1,3 +1,96 @@
-<h2>Edit A Spotting</h2>
+<h1>Edit This Spotting!</h1>
 
-{{currentEntry}}
+<div class="new-entry">
+  <div class="entry-box">
+    <h2>General</h2>
+    <label>Category: </label><select ng-model="data.category">
+      <option ng-repeat="category in categories">{{category}}</option>
+    </select><br/>
+  </div>
+  <br />
+
+  <div class="entry-box">
+    <label>Common Name: </label><input type="text" ng-model="data.common_name"/><br/>
+  </div>
+  <br />
+
+  <div class="entry-box">
+    <label>Scientific Name: </label><input type="text" ng-model="data.scientific_name"/><br/>
+  </div>
+  <br />
+
+  <div class="entry-box">
+    <h3>Location</h3>
+    <label>Country: </label><input type="text" ng-model="data.location_country"/><br/>
+    <label>State/Province: </label><input type="text" ng-model="data.location_state"/><br/>
+    <label>County/Parish: </label><input type="text" ng-model="data.location_county"/><br/>
+  </div>
+  <br />
+
+  <div class="entry-box">
+    <h3>Date Spotted</h3>
+    <label>Year (yyyy): </label><input type="text" ng-model="data.year_spotted"/>
+    <label>Month (mm): </label><input type="text" ng-model="data.month_spotted"/>
+    <label>Day(dd): </label><input type="text" ng-model="data.day_spotted"/><br/>
+    <br />
+    <label>Time of day: </label><select ng-model="data.time_spotted">
+        <option ng-repeat="time in timeList">{{time}}</option>
+      </select>
+  </div>
+  <br />
+
+  <div class="entry-box">
+    <label><h3>Individual or Group?</h3></label>
+      <input type="radio" ng-model="data.group" value="group"/>Group<br/>
+      <input type="radio" ng-model="data.group" value="individual"/>Individual<br/>
+  </div>
+  <br />
+  <!-- Toggle Show -->
+        <div class="entry-box" ng-show="data.group == 'group'">
+          <label>Estimated number in group: </label><input type="text" ng-model="data.number_in_group"/>
+        </div>
+
+        <div class="entry-box" ng-show="data.group == 'individual'">
+          <label>Sex:</label><select ng-model="data.sex">
+              <option ng-repeat="sex in sexList">{{sex}}</option>
+            </select>
+          <label>Age:</label><select ng-model="data.age">
+              <option ng-repeat="age in ageList">{{age}}</option>
+            </select>
+          <label>Individual Description: </label><input type="text" ng-model="data.individual_description"/><br/>
+        </div>
+  <!-- Toggle Show -->
+
+    <div class="entry-box">
+      <h3>Weather Conditions</h3>
+      <label>Atmospheric: </label>
+      <br />
+        <input type="checkbox" ng-model="data.sunny" value="true"/> Sunny<br />
+        <input type="checkbox" ng-model="data.overcast" value="true"/> Overcast<br />
+        <input type="checkbox" ng-model="data.raining" value="true"/> Raining<br />
+        <input type="checkbox" ng-model="data.snowing" value="true"/> Snowing<br />
+        <input type="checkbox" ng-model="data.foggy" value="true"/> Foggy<br />
+        <input type="checkbox" ng-model="data.windy" value="true"/> Windy<br />
+        Other: <input type="text" ng-model="data.other_weather"/><br />
+
+        <br />
+      <label>Temperature (F˚): </label><select ng-model="data.temperature">
+        <option ng-repeat="temp in tempList">{{temp}}</option>
+      </select><br/>
+    </div>
+    <br />
+
+    <div class="entry-box">
+      <label><h3>Additional Notes: </h3></label>
+      <textarea rows="4" cols="50" ng-model="data.additional_notes"/></textarea>
+    </div>
+    <br /><br />
+
+
+  <div>
+    <button ng-click="updateEntry()">Update</button><br/>
+    <br />
+    <a href="/view_data"><button class="cancel">Cancel</button></a>
+  </div>
+
+</div>
