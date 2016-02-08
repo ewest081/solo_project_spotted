@@ -59,6 +59,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
           templateUrl: 'views/entry_success.html',
           controller: 'EntrySuccessController',
         })
+        .when('/edit_entry', {
+          templateUrl: 'views/edit_entry.html',
+          controller: 'EditEntryController',
+        })
         .when('/log_out', {
           templateUrl: 'views/log_out.html',
           controller: 'LogOutController',
@@ -176,7 +180,8 @@ app.controller('FailController', ['$scope', function($scope){
   console.log("Ha ha!");
 }]);
 
-app.controller('ViewDataController', ['$scope', 'userData', '$http', function($scope, userData, $http){
+
+app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$http', '$location', function($scope, userData, currentEntry, $http, $location){
   $scope.thisUser = userData.currentUser.username;
   var userID = userData.currentUser.id;
 
@@ -253,12 +258,21 @@ app.controller('ViewDataController', ['$scope', 'userData', '$http', function($s
     }
   };
 
-
-
-
+  $scope.editEntry = function(entry){
+    currentEntry.setEntry(entry);
+    $location.path('/edit_entry');
+  };
 
 
 }]);
+
+
+app.controller('EditEntryController', ['$scope', '$http', '$location', 'userData', 'currentEntry', function($scope, $http, $location, userData, currentEntry){
+  $scope.currentEntry = currentEntry;
+  console.log($scope.currentEntry);
+
+}]);
+
 
 app.controller('NewEntryController', ['$scope', '$http', '$location', 'userData', function($scope, $http, $location, userData){
   $scope.data = {};
@@ -341,6 +355,27 @@ app.factory('userData', ['$http', '$timeout', function($http, $timeout){
     currentUser: currentUser,
     setUser: setUser,
     setUserID: setUserID
+  };
+
+}]);
+
+app.factory('currentEntry', ['$http', function($http){
+  var currentEntry = {
+    data: {}
+  };
+
+  var setEntry = function(entry){
+    currentEntry.data = entry;
+  };
+
+  var clearCurrentEntry = function(){
+    currentEntry.data = {};
+  };
+
+  return {
+    currentEntry: currentEntry,
+    setEntry: setEntry,
+    clearCurrentEntry: clearCurrentEntry
   };
 
 }]);

@@ -36,7 +36,7 @@
             <div class="simple-expanded" ng-show="entry.show">
               <p>Day: {{entry.day_spotted}} Month: {{entry.month_spotted}} Year: {{entry.year_spotted}}</p>
               <p>Location: {{entry.location_country}} {{entry.location_state}} {{entry.location_county}}</p>
-              <button class="tiny cancel" ng-click="editEntry()">Edit</button>
+              <button class="tiny cancel" ng-click="editEntry(entry)">Edit</button>
             </div>
 
             <button class="tiny" ng-click="viewEntry(entry)">{{entry.view}}</button>
