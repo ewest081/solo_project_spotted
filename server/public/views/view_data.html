@@ -94,6 +94,7 @@
         <button ng-click="getComplexList()">Show me my list!</button>
         <br /><br />
 
+        <h2 ng-show="complexResponse">{{responseLength}} search matches!</h2>
         <div class="single-entry" ng-repeat="entry in entries">
           <h3>{{entry.common_name}}</h3>
           <p>{{entry.scientific_name}}</p>
@@ -103,6 +104,7 @@
             <p>{{entry.individual_age}}</p>
             <p>{{entry.additional_notes}}</p>
             <p>Spotted by: {{entry.username}}</p>
+            <button class="tiny" ng-click="globalView(entry)">View</button>
         </div>
 
       </div>

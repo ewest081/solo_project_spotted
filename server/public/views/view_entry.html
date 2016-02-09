@@ -1,0 +1,25 @@
+<div class="view-entry">
+
+  <h1>Data for this Entry:</h1>
+
+  <p>Spotted by: {{data.username}}</p>
+  <h2>{{data.common_name}}</h2>
+  <p>{{data.scientific_name}}</p>
+  <h3>Category: {{data.category}}</h3>
+  <h4>Location:</h4>
+  <p>Country: {{data.location_country}}  |  State/Province: {{data.location_state}}  |  County/Parish: {{data.location_county}}</p><br />
+  <h4>Date Spotted:</h4>
+  <p>Year: {{data.year_spotted}}  Month: {{data.month_spotted}}  Day: {{data.day_spotted}}</p>
+  <p>{{data.time_spotted}}</p><br />
+  <h4>{{groupMessage}}</h4>
+  <p>{{data.individual_sex}} {{$scope.data.individual_age}}</p>
+  <p>{{data.individual_description}}</p><br />
+  <h4>Weather Conditions:</h4>
+  <p ng-repeat="conditions in weather">{{conditions}}</p>
+  <p>{{data.temperature}}</p>
+  <p>Additional Notes:</p>
+  <p>{{data.additional_notes}}</p><br />
+
+    <!-- Something fun about a conditional button for user editing their ownn entries. -->
+
+</div>

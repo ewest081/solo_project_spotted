@@ -67,6 +67,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
           templateUrl: 'views/edit_entry.html',
           controller: 'EditEntryController',
         })
+        .when('/view_entry', {
+          templateUrl: 'views/view_entry.html',
+          controller: 'ViewEntryController',
+        })
         .when('/log_out', {
           templateUrl: 'views/log_out.html',
           controller: 'LogOutController',
@@ -198,6 +202,8 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
   $scope.sortType = false;
   $scope.keyword = false;
   $scope.viewTable = false;
+  $scope.responseLength = 0;
+  $scope.complexResponse = false;
 
   $scope.simpleListTog = function(){
     $scope.simpleList = $scope.simpleList === true ? false: true;
@@ -316,8 +322,15 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
               }
     }).then(function(response){
         $scope.entries = response.data;
+        $scope.responseLength = response.data.length;
+        $scope.complexResponse = true;
         console.log(response.data);
       });
+  };
+
+  $scope.globalView = function(entry){
+    currentEntry.setEntry(entry);
+    $location.path('/view_entry');
   };
 
   $scope.editEntry = function(entry){
@@ -327,6 +340,55 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
 
 
 }]);
+
+
+
+app.controller('ViewEntryController', ['$scope', 'userData', 'currentEntry', function($scope, userData, currentEntry){
+  $scope.data = currentEntry.currentEntry.data;
+  $scope.weather = [];
+  $scope.groupMessage = '';
+
+  makeWeather = function(){
+    if($scope.data.sunny === true){
+      $scope.weather.push('Sunny');
+    }
+    if($scope.data.raining === true){
+      $scope.weather.push('Raining');
+    }
+    if($scope.data.foggy === true){
+      $scope.weather.push('Foggy');
+    }
+    if($scope.data.snowing === true){
+      $scope.weather.push('Snowing');
+    }
+    if($scope.data.windy === true){
+      $scope.weather.push('Windy');
+    }
+    if($scope.data.overcast === true){
+      $scope.weather.push('Overcast');
+    }
+    if($scope.data.other_weather !== null){
+      $scope.weather.push($scope.data.other_weather);
+    }
+  };
+
+  makeGroupInfo = function(){
+    var groupNum = '';
+    if($scope.data.number_in_group > 1){
+      groupNum = ' of ' + $scope.data.number_in_group + ' individuals.';
+    }
+    if($scope.data.is_group == 'group'){
+      $scope.groupMessage = 'Spotted in a group' + groupNum;
+    }else if ($scope.data.is_group == 'individual'){
+      $scope.groupMessage = 'Spotted as an individual.';
+    }
+
+  };
+
+  makeWeather();
+  makeGroupInfo();
+}]);
+
 
 
 app.controller('EditEntryController', ['$scope', '$http', '$location', 'userData', 'currentEntry', function($scope, $http, $location, userData, currentEntry){
@@ -383,9 +445,6 @@ app.controller('EditEntryController', ['$scope', '$http', '$location', 'userData
         //clear curent entry
       });
   };
-
-
-
 
 }]);
 
