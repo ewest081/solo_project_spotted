@@ -214,6 +214,7 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
   $scope.nameSearch = '';
   $scope.locationSearch = '';
   $scope.globalSearch = false;
+  $scope.keywordParam = '';
 
   $scope.entries = [];
 
@@ -331,6 +332,24 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
   $scope.globalView = function(entry){
     currentEntry.setEntry(entry);
     $location.path('/view_entry');
+  };
+
+  $scope.keywordSearch = function(){
+    var keyword = '%' + $scope.keywordParam + '%';
+
+    $http({
+      url: '/api/getKeyword',
+      method: 'GET',
+      params: {user_id: userID,
+              keyword: keyword,
+              global_search: $scope.globalSearch
+      }
+    }).then(function(response){
+      $scope.entries = response.data;
+      $scope.responseLength = response.data.length;
+      $scope.complexResponse = true;
+      console.log(response.data);
+    });
   };
 
   $scope.editEntry = function(entry){

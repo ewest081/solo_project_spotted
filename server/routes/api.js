@@ -118,6 +118,33 @@ router.get('/getComplexList', function(request, response){
     });
 });
 
+router.get('/getKeyword', function(request, response){
+  var results = [];
+  // console.log(request.query);
+
+  pg.connect(connectionString, function(error, client){
+    if(error) console.log(error);
+    var query;
+    var globalString = '';
+
+    if(request.query.global_search === false){
+        globalString = 'user_id = ' + request.query.user_id + ' AND ';
+    }
+
+    query = client.query('SELECT * FROM entries WHERE ' + globalString + 'username LIKE $1 OR common_name LIKE $1 OR scientific_name LIKE $1 OR location_country LIKE $1 OR location_state LIKE $1 OR location_county LIKE $1 OR time_spotted LIKE $1 OR individual_sex LIKE $1 OR individual_age LIKE $1 OR individual_description LIKE $1 OR additional_notes LIKE $1 ORDER BY common_name', [request.query.keyword]);
+
+    query.on('row', function(row){
+      results.push(row);
+    });
+
+    query.on('end', function(){
+      client.end();
+      // console.log(results);
+      return response.json(results);
+    });
+  });
+});
+
 
 router.post('/registerUser', function(request, response){
   // console.log(request.query);
