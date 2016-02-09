@@ -228,9 +228,16 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     $scope.entries = [];
   };
 
+
   $scope.categorySelect = "All";
   $scope.categories = ["All", "Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
   $scope.view = "View More";
+
+  $scope.startDate = '';
+  $scope.endDate = '';
+  $scope.nameSearch = '';
+  $scope.locationSearch = '';
+  $scope.globalSearch = false;
 
   $scope.entries = [];
 
@@ -277,6 +284,37 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     }else{
       entry.view = "View More";
     }
+  };
+
+  $scope.getComplexList = function(){
+    var category = $scope.categorySelect;
+    var start_date = $scope.startDate;
+    var end_date = $scope.endDate;
+
+    if($scope.categorySelect == "All"){
+      category = null;
+    }
+    if($scope.startDate === ''){
+      start_date = 0;
+    }
+    if($scope.endDate === ''){
+      end_date = 9999;
+    }
+
+    $http({
+      url: '/api/getComplexList',
+      method: 'GET',
+      params: {user_id: userID,
+              category: category,
+              start_date: start_date,
+              end_date: end_date,
+              name_search: ('%' + $scope.nameSearch + '%'),
+              location_search: ('%' + $scope.locationSearch + '%'),
+              global_search: $scope.globalSearch
+              }
+    }).then(function(response){
+        $scope.entries = response.data;
+      });
   };
 
   $scope.editEntry = function(entry){
