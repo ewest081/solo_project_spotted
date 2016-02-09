@@ -78,13 +78,14 @@ router.get('/getTableData', function(request, response){
 
 router.get('/getComplexList', function(request, response){
     var results = [];
-    var search = {user_id: request.params.user_id,
-                  category: request.params.category,
-                  start_date: request.params.start_date,
-                  end_date: request.params.end_date,
-                  name_search: request.params.name_search,
-                  location_search: request.params.location_search,
-                  global_search: request.params.global_search
+    console.log(request.query);
+    var search = {user_id: request.query.user_id,
+                  category: request.query.category,
+                  start_date: request.query.start_date,
+                  end_date: request.query.end_date,
+                  name_search: request.query.name_search,
+                  location_search: request.query.location_search,
+                  global_search: request.query.global_search
     };
 
     pg.connect(connectionString, function(error, client){
@@ -93,13 +94,11 @@ router.get('/getComplexList', function(request, response){
       var globalString = '';
       var query;
 
-      if(search.global_search === true){
-          globalString = ' user_id = ' + search.user_id + ' AND ';
+      if(search.global_search === false){
+          globalString = 'user_id = ' + search.user_id + ' AND ';
       }
 
-      console.log(search);
-
-      query = client.query('SELECT * FROM entries WHERE' + globalString + 'year_spotted BETWEEN $1 AND $2 AND (common_name LIKE $3 OR scientific_name LIKE $3) AND (location_country LIKE $4 OR location_state LIKE $4 OR location_county LIKE $4) EXCEPT SELECT * FROM entries WHERE category != $5 ORDER by common_name', [search.start_date, search.end_date, search.name_search, search.location_search, search.category]);
+      query = client.query('SELECT * FROM entries WHERE ' + globalString + 'year_spotted BETWEEN $1 AND $2 AND (common_name LIKE $3 OR scientific_name LIKE $3) AND (location_country LIKE $4 OR location_state LIKE $4 OR location_county LIKE $4) EXCEPT SELECT * FROM entries WHERE category != $5 ORDER by common_name', [search.start_date, search.end_date, search.name_search, search.location_search, search.category]);
 
 
       query.on('row', function(row){

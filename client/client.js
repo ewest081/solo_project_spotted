@@ -290,6 +290,8 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     var category = $scope.categorySelect;
     var start_date = $scope.startDate;
     var end_date = $scope.endDate;
+    var name_search = '%' + $scope.nameSearch + '%';
+    var location_search = '%' + $scope.locationSearch + '%';
 
     if($scope.categorySelect == "All"){
       category = null;
@@ -308,12 +310,13 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
               category: category,
               start_date: start_date,
               end_date: end_date,
-              name_search: ('%' + $scope.nameSearch + '%'),
-              location_search: ('%' + $scope.locationSearch + '%'),
+              name_search: name_search,
+              location_search: location_search,
               global_search: $scope.globalSearch
               }
     }).then(function(response){
         $scope.entries = response.data;
+        console.log(response.data);
       });
   };
 

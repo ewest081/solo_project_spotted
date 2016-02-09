@@ -97,16 +97,16 @@
         <div class="single-entry" ng-repeat="entry in entries">
           <h3>{{entry.common_name}}</h3>
           <p>{{entry.scientific_name}}</p>
-          <div class="simple-expanded" ng-show="entry.show">
+          <!-- <div class="simple-expanded" ng-show="entry.show"> -->
             <p>Day: {{entry.day_spotted}} Month: {{entry.month_spotted}} Year: {{entry.year_spotted}}</p>
             <p>Location: {{entry.location_country}} {{entry.location_state}} {{entry.location_county}}</p>
             <p>{{entry.individual_sex}}</p>
             <p>{{entry.individual_age}}</p>
             <p>{{entry.additional_notes}}</p>
-            <button class="tiny cancel" ng-click="editEntry(entry)">Edit</button>
-          </div>
+            <!-- <button class="tiny cancel" ng-click="editEntry(entry)">Edit</button>
+          </div> -->
 
-          <button class="tiny" ng-click="viewEntry(entry)">{{entry.view}}</button>
+          <!-- <button class="tiny" ng-click="viewEntry(entry)">{{entry.view}}</button> -->
         </div>
 
       </div>
