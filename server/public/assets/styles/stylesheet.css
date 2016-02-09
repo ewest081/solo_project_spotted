@@ -78,13 +78,13 @@ footer {
 .nav:hover {
   color: #FBD488; }
 
-.sign-in .sign-in-box, .register .sign-in-box, .new-entry .sign-in-box, .entry-success .sign-in-box, .view-data .sign-in-box, .view-entry .sign-in-box, .log-out .sign-in-box {
+.sign-in .sign-in-box, .register .sign-in-box, .new-entry .sign-in-box, .entry-success .sign-in-box, .view-data .sign-in-box, .view-entry .sign-in-box, .log-out .sign-in-box, .failed-login .sign-in-box {
   width: 200px;
   display: flex;
   justify-content: space-between; }
-  .sign-in .sign-in-box input, .register .sign-in-box input, .new-entry .sign-in-box input, .entry-success .sign-in-box input, .view-data .sign-in-box input, .view-entry .sign-in-box input, .log-out .sign-in-box input {
+  .sign-in .sign-in-box input, .register .sign-in-box input, .new-entry .sign-in-box input, .entry-success .sign-in-box input, .view-data .sign-in-box input, .view-entry .sign-in-box input, .log-out .sign-in-box input, .failed-login .sign-in-box input {
     width: 100px; }
-.sign-in button, .register button, .new-entry button, .entry-success button, .view-data button, .view-entry button, .log-out button {
+.sign-in button, .register button, .new-entry button, .entry-success button, .view-data button, .view-entry button, .log-out button, .failed-login button {
   width: 200px;
   margin: 0 0 10px 0;
   background-color: #5a9330;
@@ -93,28 +93,28 @@ footer {
   border-left: solid 2px #80B759;
   border-bottom: solid 2px #1E4900;
   border-right: solid 2px #1E4900; }
-.sign-in .alternate, .register .alternate, .new-entry .alternate, .entry-success .alternate, .view-data .alternate, .view-entry .alternate, .log-out .alternate {
+.sign-in .alternate, .register .alternate, .new-entry .alternate, .entry-success .alternate, .view-data .alternate, .view-entry .alternate, .log-out .alternate, .failed-login .alternate {
   background-color: #3d44d0;
   border-top: solid 2px #5D63DA;
   border-left: solid 2px #5D63DA;
   border-bottom: solid 2px #111898;
   border-right: solid 2px #111898; }
-.sign-in button:hover, .register button:hover, .new-entry button:hover, .entry-success button:hover, .view-data button:hover, .view-entry button:hover, .log-out button:hover {
+.sign-in button:hover, .register button:hover, .new-entry button:hover, .entry-success button:hover, .view-data button:hover, .view-entry button:hover, .log-out button:hover, .failed-login button:hover {
   background-color: #386E12; }
-.sign-in .alternate:hover, .register .alternate:hover, .new-entry .alternate:hover, .entry-success .alternate:hover, .view-data .alternate:hover, .view-entry .alternate:hover, .log-out .alternate:hover {
+.sign-in .alternate:hover, .register .alternate:hover, .new-entry .alternate:hover, .entry-success .alternate:hover, .view-data .alternate:hover, .view-entry .alternate:hover, .log-out .alternate:hover, .failed-login .alternate:hover {
   background-color: #1B24C7; }
-.sign-in .cancel, .register .cancel, .new-entry .cancel, .entry-success .cancel, .view-data .cancel, .view-entry .cancel, .log-out .cancel {
+.sign-in .cancel, .register .cancel, .new-entry .cancel, .entry-success .cancel, .view-data .cancel, .view-entry .cancel, .log-out .cancel, .failed-login .cancel {
   background-color: #97314c;
   border-top: solid 2px #BD5C76;
   border-left: solid 2px #BD5C76;
   border-bottom: solid 2px #4A0014;
   border-right: solid 2px #4A0014; }
-.sign-in .cancel:hover, .register .cancel:hover, .new-entry .cancel:hover, .entry-success .cancel:hover, .view-data .cancel:hover, .view-entry .cancel:hover, .log-out .cancel:hover {
+.sign-in .cancel:hover, .register .cancel:hover, .new-entry .cancel:hover, .entry-success .cancel:hover, .view-data .cancel:hover, .view-entry .cancel:hover, .log-out .cancel:hover, .failed-login .cancel:hover {
   background-color: #71122B; }
-.sign-in .medium, .register .medium, .new-entry .medium, .entry-success .medium, .view-data .medium, .view-entry .medium, .log-out .medium {
+.sign-in .medium, .register .medium, .new-entry .medium, .entry-success .medium, .view-data .medium, .view-entry .medium, .log-out .medium, .failed-login .medium {
   width: 75%;
   height: 85px; }
-.sign-in .tiny, .register .tiny, .new-entry .tiny, .entry-success .tiny, .view-data .tiny, .view-entry .tiny, .log-out .tiny {
+.sign-in .tiny, .register .tiny, .new-entry .tiny, .entry-success .tiny, .view-data .tiny, .view-entry .tiny, .log-out .tiny, .failed-login .tiny {
   width: 80px; }
 
 .center-this {

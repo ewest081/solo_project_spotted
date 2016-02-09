@@ -119,8 +119,10 @@ app.controller('SignInController', ['$scope', '$http', '$location', 'userData', 
 
   $scope.submitData = function(){
     $http.post('/', $scope.data).then(function(response){
-      userData.setUser($scope.data.username);
-      userData.setUserID($scope.data.username);
+      if(response.data == 'success'){
+        userData.setUser($scope.data.username);
+        userData.setUserID($scope.data.username);
+      }
       $location.path(response.data);
     });
   };
