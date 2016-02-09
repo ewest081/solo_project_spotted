@@ -78,7 +78,7 @@ router.get('/getTableData', function(request, response){
 
 router.get('/getComplexList', function(request, response){
     var results = [];
-    console.log(request.query);
+    // console.log(request.query);
     var search = {user_id: request.query.user_id,
                   category: request.query.category,
                   start_date: request.query.start_date,

@@ -205,6 +205,18 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
   $scope.responseLength = 0;
   $scope.complexResponse = false;
 
+  $scope.categorySelect = "All";
+  $scope.categories = ["All", "Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
+  $scope.view = "View More";
+
+  $scope.startDate = '';
+  $scope.endDate = '';
+  $scope.nameSearch = '';
+  $scope.locationSearch = '';
+  $scope.globalSearch = false;
+
+  $scope.entries = [];
+
   $scope.simpleListTog = function(){
     $scope.simpleList = $scope.simpleList === true ? false: true;
     $scope.sortType = false;
@@ -234,18 +246,6 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     $scope.entries = [];
   };
 
-
-  $scope.categorySelect = "All";
-  $scope.categories = ["All", "Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
-  $scope.view = "View More";
-
-  $scope.startDate = '';
-  $scope.endDate = '';
-  $scope.nameSearch = '';
-  $scope.locationSearch = '';
-  $scope.globalSearch = false;
-
-  $scope.entries = [];
 
   $scope.getSimpleList = function(){
     var category = $scope.categorySelect;
@@ -324,7 +324,7 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
         $scope.entries = response.data;
         $scope.responseLength = response.data.length;
         $scope.complexResponse = true;
-        console.log(response.data);
+        // console.log(response.data);
       });
   };
 
@@ -338,15 +338,16 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     $location.path('/edit_entry');
   };
 
-
 }]);
 
 
 
-app.controller('ViewEntryController', ['$scope', 'userData', 'currentEntry', function($scope, userData, currentEntry){
+app.controller('ViewEntryController', ['$scope', 'userData', 'currentEntry', '$location', function($scope, userData, currentEntry, $location){
   $scope.data = currentEntry.currentEntry.data;
   $scope.weather = [];
   $scope.groupMessage = '';
+  $scope.loggedInUser = false;
+  $scope.thisUser = userData.currentUser.username;
 
   makeWeather = function(){
     if($scope.data.sunny === true){
@@ -382,18 +383,29 @@ app.controller('ViewEntryController', ['$scope', 'userData', 'currentEntry', fun
     }else if ($scope.data.is_group == 'individual'){
       $scope.groupMessage = 'Spotted as an individual.';
     }
+  };
 
+  userLoggedIn = function(){
+    if($scope.data.username == $scope.thisUser){
+      $scope.loggedInUser = true;
+    }
+  };
+
+  $scope.editEntry = function(){
+    currentEntry.setEntry($scope.data);
+    $location.path('/edit_entry');
   };
 
   makeWeather();
   makeGroupInfo();
+  userLoggedIn();
 }]);
 
 
 
 app.controller('EditEntryController', ['$scope', '$http', '$location', 'userData', 'currentEntry', function($scope, $http, $location, userData, currentEntry){
   $scope.data = currentEntry.currentEntry.data;
-  // console.log($scope.data);
+  console.log($scope.data);
 
   $scope.timeList = ["Dawn", "Morning", "Mid Day", "Afternoon", "Dusk", "Night"];
   $scope.categories = ["Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
