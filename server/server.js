@@ -74,6 +74,11 @@ passport.use('local', new localStrategy({
     });
 }));
 
+app.get('/logout', function(request, response){
+  request.logout();
+  response.send('/sign_in');
+});
+
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 //              Server Functions
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]

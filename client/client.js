@@ -184,8 +184,20 @@ app.controller('UpdateSucessController', ['$scope', 'userData', function($scope,
 }]);
 
 
-app.controller('LogOutController', ['$scope', 'userData', function($scope, userData){
+app.controller('LogOutController', ['$scope', '$http', 'userData', '$location', function($scope, $http, userData, $location){
   $scope.warning = "Are you sure you want to log out, " + userData.currentUser.username + "?";
+
+  $scope.logOut = function(){
+    userData.clearUser();
+
+    $http.get('/logout', function(){
+
+    }).then(function(response){
+      $location.path(response.data);
+    });
+  };
+
+
 }]);
 
 
@@ -557,10 +569,16 @@ app.factory('userData', ['$http', '$timeout', function($http, $timeout){
       });
   };
 
+  var clearUser = function(username){
+    currentUser.username = '';
+    changeNavLinks();
+  };
+
   return {
     currentUser: currentUser,
     setUser: setUser,
-    setUserID: setUserID
+    setUserID: setUserID,
+    clearUser: clearUser
   };
 
 }]);
