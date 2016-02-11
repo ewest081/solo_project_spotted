@@ -280,7 +280,6 @@ app.controller('EditProfileController', ['$scope', 'userData', '$http', '$locati
                 email: thisEmail
                 };
 
-  // $scope.thisUser = userData.currentUser;
   $scope.update = false;
   $scope.data = {};
 
@@ -447,6 +446,10 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
               }
     }).then(function(response){
         $scope.entries = response.data;
+
+        for(i=0; i < response.data.length; i++){
+          $scope.entries[i].number = i;
+        }
       });
   };
 

@@ -227,4 +227,7 @@ table, th, td {
 .guest-home .sort-type, .guest-home .keyword {
   text-align: left; }
 
+.entry-success h2 {
+  text-align: center; }
+
 /*# sourceMappingURL=stylesheet.css.map */
