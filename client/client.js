@@ -267,26 +267,43 @@ app.controller('UserController', ['$scope', 'userData', function($scope, userDat
 
 
 app.controller('EditProfileController', ['$scope', 'userData', '$http', '$location', function($scope, userData, $http, $location){
-  $scope.thisUser = userData.currentUser;
+  var thisUsername = userData.currentUser.username;
+  var thisFirstName = userData.currentUser.first_name;
+  var thisLastName = userData.currentUser.last_name;
+  var thisPassword = userData.currentUser.password;
+  var thisEmail = userData.currentUser.email;
+
+  $scope.thisUser = {username: thisUsername,
+                password: thisPassword,
+                first_name: thisFirstName,
+                last_name: thisLastName,
+                email: thisEmail
+                };
+
+  // $scope.thisUser = userData.currentUser;
   $scope.update = false;
   $scope.data = {};
 
   $scope.showUpdate = function(){
     $scope.update = $scope.update === true ? false: true;
-    $scope.data = userData.currentUser;
+    $scope.data = {username: thisUsername,
+                  password: thisPassword,
+                  first_name: thisFirstName,
+                  last_name: thisLastName,
+                  email: thisEmail
+                  };
   };
 
   $scope.cancel = function(){
     $scope.update = false;
     $scope.data = {};
-    $scope.thisUser = userData.currentUser;
   };
 
   $scope.registerUpdate = function (){
     $http({
       url: '/api/registerUpdate',
       method: 'POST',
-      params: {id: $scope.data.id,
+      params: {id: userData.currentUser.id,
                 username: $scope.data.username,
                 password: $scope.data.password,
                 first_name: $scope.data.first_name,
