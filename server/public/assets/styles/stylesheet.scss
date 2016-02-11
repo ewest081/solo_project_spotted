@@ -27,7 +27,7 @@ footer {
   width: 100%;
   margin: 0;
   background-color: #5a9330;
-  // background-image: url("/images/jungle.jpg");
+  // background-image: url("../images/jungle.jpg");
   padding: 20px 0;
   border-top: solid 5px black;
   border-bottom: solid 5px black;
@@ -106,7 +106,21 @@ footer {
   color: #FBD488;
 }
 
-.sign-in, .register, .new-entry, .entry-success, .view-data, .view-entry, .log-out, .failed-login {
+.wide-box {
+  width: 100%;
+  margin: 10px auto;
+  color: #d5a954;
+  background-color: #3d44d0;
+  border-top: solid 2px #5D63DA;
+  border-left: solid 2px #5D63DA;
+  border-bottom: solid 2px #111898;
+  border-right: solid 2px #111898;
+  h1 {
+    text-align: center;
+  }
+}
+
+.sign-in, .register, .new-entry, .guest-home, .entry-success, .view-data, .view-entry, .log-out, .failed-login {
   .sign-in-box {
      width: 200px;
      display: flex;
@@ -155,13 +169,26 @@ footer {
   .tiny {
     width: 80px;
   }
+  .wide-box {
+    width: 100%;
+    margin: 10px auto;
+    color: #d5a954;
+    background-color: #3d44d0;
+    border-top: solid 2px #5D63DA;
+    border-left: solid 2px #5D63DA;
+    border-bottom: solid 2px #111898;
+    border-right: solid 2px #111898;
+    h1 {
+      text-align: center;
+    }
+  }
 }
 
 .center-this {
   text-align: center;
 }
 
-.user-home {
+.user-home, .guest-home {
   margin: 0 auto;
   width: 80%;
   .user-choices {
@@ -188,26 +215,11 @@ footer {
   background-color: #386E12;
 }
 
-.wide-box {
-  width: 100%;
-  margin: 10px auto;
-  color: #d5a954;
-  background-color: #3d44d0;
-  border-top: solid 2px #5D63DA;
-  border-left: solid 2px #5D63DA;
-  border-bottom: solid 2px #111898;
-  border-right: solid 2px #111898;
-  h1 {
-    text-align: center;
-  }
-}
-
-
 .link-box:hover {
   background-color: #1B24C7;
 }
 
-.view-options {
+.view-options, .guest-home {
   margin: 0 auto;
   width: 100%;
   display: inline;
@@ -271,5 +283,14 @@ table, th, td {
   border: solid 1px #3d44d0;
   table tr:nth-child(odd){
     background-color: #a8a8a8;
+  }
+}
+
+.guest-home {
+  .full-box {
+    width: 100%
+  }
+  .sort-type, .keyword {
+    text-align: left;
   }
 }

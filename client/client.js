@@ -155,7 +155,98 @@ app.controller('RegisterSuccessController', ['$scope', '$http', function($scope,
 }]);
 
 
-app.controller('GuestController', ['$scope', function($scope){
+app.controller('GuestController', ['$scope', '$http', '$location', 'userData', 'currentEntry', function($scope, $http, $location, userData, currentEntry){
+  $scope.thisUser = '';
+  var userID = '';
+
+  $scope.sortType = false;
+  $scope.keyword = false;
+  $scope.responseLength = 0;
+  $scope.complexResponse = false;
+
+  $scope.categorySelect = "All";
+  $scope.categories = ["All", "Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
+  $scope.view = "View More";
+
+  $scope.startDate = '';
+  $scope.endDate = '';
+  $scope.nameSearch = '';
+  $scope.locationSearch = '';
+  $scope.globalSearch = true;
+  $scope.keywordParam = '';
+
+  $scope.entries = [];
+
+  $scope.sortTypeTog = function(){
+    $scope.sortType = $scope.sortType === true ? false: true;
+    $scope.keyword = false;
+    $scope.entries = [];
+  };
+  $scope.keywordTog = function(){
+    $scope.keyword = $scope.keyword === true ? false: true;
+    $scope.sortType = false;
+    $scope.entries = [];
+  };
+
+  $scope.getComplexList = function(){
+    $scope.entrie = [];
+    var category = $scope.categorySelect;
+    var start_date = $scope.startDate;
+    var end_date = $scope.endDate;
+    var name_search = '%' + $scope.nameSearch + '%';
+    var location_search = '%' + $scope.locationSearch + '%';
+
+    if($scope.categorySelect == "All"){
+      category = null;
+    }
+    if($scope.startDate === ''){
+      start_date = 0;
+    }
+    if($scope.endDate === ''){
+      end_date = 9999;
+    }
+
+    $http({
+      url: '/api/getComplexList',
+      method: 'GET',
+      params: {user_id: userID,
+              category: category,
+              start_date: start_date,
+              end_date: end_date,
+              name_search: name_search,
+              location_search: location_search,
+              global_search: $scope.globalSearch
+              }
+    }).then(function(response){
+        $scope.entries = response.data;
+        $scope.responseLength = response.data.length;
+        $scope.complexResponse = true;
+        // console.log(response.data);
+      });
+  };
+
+  $scope.globalView = function(entry){
+    currentEntry.setEntry(entry);
+    $location.path('/view_entry');
+  };
+
+  $scope.keywordSearch = function(){
+    var keyword = '%' + $scope.keywordParam + '%';
+
+    $http({
+      url: '/api/getKeyword',
+      method: 'GET',
+      params: {user_id: userID,
+              keyword: keyword,
+              global_search: $scope.globalSearch
+      }
+    }).then(function(response){
+      $scope.entries = response.data;
+      $scope.responseLength = response.data.length;
+      $scope.complexResponse = true;
+      console.log(response.data);
+    });
+  };
 
 }]);
 
@@ -199,12 +290,11 @@ app.controller('LogOutController', ['$scope', '$http', 'userData', '$location', 
     });
   };
 
-
 }]);
 
 
 app.controller('FailController', ['$scope', function($scope){
-  console.log("Ha ha!");
+
 }]);
 
 
@@ -238,6 +328,8 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     $scope.keyword = false;
     $scope.viewTable = false;
     $scope.entries = [];
+    $scope.responseLength = 0;
+    $scope.complexResponse = false;
   };
   $scope.sortTypeTog = function(){
     $scope.sortType = true;
@@ -245,6 +337,8 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     $scope.viewTable = false;
     $scope.simpleList = false;
     $scope.entries = [];
+    $scope.responseLength = 0;
+    $scope.complexResponse = false;
   };
   $scope.keywordTog = function(){
     $scope.keyword = $scope.keyword === true ? false: true;
@@ -252,6 +346,8 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     $scope.simpleList = false;
     $scope.viewTable = false;
     $scope.entries = [];
+    $scope.responseLength = 0;
+    $scope.complexResponse = false;
   };
   $scope.viewTableTog = function(){
     $scope.viewTable = $scope.viewTable === true ? false: true;
@@ -259,6 +355,8 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     $scope.keyword = false;
     $scope.simpleList = false;
     $scope.entries = [];
+    $scope.responseLength = 0;
+    $scope.complexResponse = false;
   };
 
 
@@ -308,6 +406,7 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
   };
 
   $scope.getComplexList = function(){
+    $scope.entries = [];
     var category = $scope.categorySelect;
     var start_date = $scope.startDate;
     var end_date = $scope.endDate;
