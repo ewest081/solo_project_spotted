@@ -176,6 +176,32 @@ router.post('/registerUser', function(request, response){
     });
 });
 
+
+router.post('/registerUpdate', function(request, response){
+  // console.log(request.query);
+
+  var updateUser = {id: request.query.id,
+                username: request.query.username,
+                password: request.query.password,
+                first_name: request.query.first_name,
+                last_name: request.query.last_name,
+                email: request.query.email};
+
+  pg.connect(connectionString, function(err, client){
+
+      var query = client.query('UPDATE users SET username=$1, password=$2, first_name=$3, last_name=$4, email=$5 WHERE id=$6', [updateUser.username, updateUser.password, updateUser.first_name, updateUser.last_name, updateUser.email, updateUser.id]);
+
+      query.on('end', function(){
+          client.end();
+          response.send('profile_update_success');
+      });
+
+      if(err) {
+          console.log(Error);
+      }
+    });
+});
+
 router.post('/newEntry', function(request, response){
 
   var newEntry = {user_id: request.query.user_id,

@@ -47,6 +47,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
           templateUrl: 'views/edit_profile.html',
           controller: 'EditProfileController',
         })
+        .when('/profile_update_success', {
+          templateUrl: 'views/profile_update_success.html',
+          controller: 'ProfileUpdateSuccessController',
+        })
         .when('/view_data', {
           templateUrl: 'views/view_data.html',
           controller: 'ViewDataController',
@@ -262,7 +266,41 @@ app.controller('UserController', ['$scope', 'userData', function($scope, userDat
 }]);
 
 
-app.controller('EditProfileController', ['$scope', 'userData', function($scope, userData){
+app.controller('EditProfileController', ['$scope', 'userData', '$http', '$location', function($scope, userData, $http, $location){
+  $scope.thisUser = userData.currentUser;
+  $scope.update = false;
+  $scope.data = {};
+
+  $scope.showUpdate = function(){
+    $scope.update = $scope.update === true ? false: true;
+    $scope.data = userData.currentUser;
+  };
+
+  $scope.cancel = function(){
+    $scope.update = false;
+    $scope.data = {};
+    $scope.thisUser = userData.currentUser;
+  };
+
+  $scope.registerUpdate = function (){
+    $http({
+      url: '/api/registerUpdate',
+      method: 'POST',
+      params: {id: $scope.data.id,
+                username: $scope.data.username,
+                password: $scope.data.password,
+                first_name: $scope.data.first_name,
+                last_name: $scope.data.last_name,
+                email: $scope.data.email}
+    }).then(function(response){
+        $location.path(response.data);
+      });
+  };
+
+}]);
+
+
+app.controller('ProfileUpdateSuccessController', ['$scope', function($scope){
 
 }]);
 
@@ -654,7 +692,11 @@ app.factory('userData', ['$http', '$timeout', function($http, $timeout){
 
   var currentUser = {
     username: '',
-    id: ''
+    id: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: ''
   };
 
   var setUser = function(username){
@@ -667,6 +709,10 @@ app.factory('userData', ['$http', '$timeout', function($http, $timeout){
 
       $http.get('/api/getUser' + params).then(function(response){
           currentUser.id = response.data.user.id;
+          currentUser.first_name = response.data.user.first_name;
+          currentUser.last_name = response.data.user.last_name;
+          currentUser.email = response.data.user.email;
+          currentUser.password = response.data.user.password;
       });
   };
 
