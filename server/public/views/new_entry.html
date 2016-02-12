@@ -45,7 +45,11 @@
 
   <div class="entry-box">
     <h3>Location</h3>
-    <label>Country: </label><input type="text" ng-model="data.location_country"/><br/>
+    <label>Country <span class="purple">(*Required*)</span>: </label><input name="location" type="text" ng-model="data.location_country" required/><br/>
+    <div ng-show="form.$submitted || form.location.$touched">
+      <div class="red" ng-show="form.location.$error.required">*Common Name Required*</div>
+    </div>
+    <br />
     <label>State/Province: </label><input type="text" ng-model="data.location_state"/><br/>
     <label>County/Parish: </label><input type="text" ng-model="data.location_county"/><br/>
   </div>

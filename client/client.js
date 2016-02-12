@@ -466,6 +466,7 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     $scope.entries = [];
     $scope.responseLength = 0;
     $scope.complexResponse = false;
+    $scope.globalSearch = false;
   };
   $scope.keywordTog = function(){
     $scope.keyword = $scope.keyword === true ? false: true;
@@ -543,6 +544,7 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     var end_date = $scope.endDate;
     var name_search = '%' + $scope.nameSearch + '%';
     var location_search = '%' + $scope.locationSearch + '%';
+    var global_search = $scope.globalSearch;
 
     if($scope.categorySelect == "All"){
       category = null;
@@ -563,7 +565,7 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
               end_date: end_date,
               name_search: name_search,
               location_search: location_search,
-              global_search: $scope.globalSearch
+              global_search: global_search
               }
     }).then(function(response){
         $scope.entries = response.data;
