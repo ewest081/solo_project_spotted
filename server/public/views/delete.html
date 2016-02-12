@@ -1,0 +1,19 @@
+<div class="delete-entry">
+
+  <h1>Are you sure you want to delete this entry?</h1>
+
+  <div>
+    <h4>{{thisEntry.common_name}}, {{thisEntry.year_spotted}}</h4>
+  </div>
+
+  <h3 class="purple">Warning: This action cannot be undone</h3>
+
+  <div>
+    <a href="/view_data"><button class="alternate">Cancel and Go Back</button></a>
+    <br />
+    <button class="cancel" ng-click="deleteEntry()">Delete</button><br/>
+    <br />
+  </div>
+
+
+</div>

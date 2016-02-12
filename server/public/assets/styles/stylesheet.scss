@@ -120,7 +120,7 @@ footer {
   }
 }
 
-.sign-in, .register, .new-entry, .guest-home, .error, .edit-profile, .entry-success, .view-data, .view-entry, .log-out, .failed-login {
+.sign-in, .register, .new-entry, .delete-entry, .guest-home, .error, .edit-profile, .entry-success, .view-data, .view-entry, .log-out, .failed-login {
   .sign-in-box {
      width: 200px;
      display: flex;
@@ -161,6 +161,16 @@ footer {
   }
   .cancel:hover {
     background-color: #71122B;
+  }
+  .purp-btn{
+    background-color: #7233ce;
+    border-top: solid 2px #8954D8;
+    border-left: solid 2px #8954D8;
+    border-bottom: solid 2px #420A94;
+    border-right: solid 2px #420A94;
+  }
+  .purp-btn:hover {
+    background-color: #5910C5;
   }
   .medium {
     width: 75%;
@@ -305,11 +315,15 @@ table, th, td {
 // .form input.ng-invalid.ng-touched {
 //    background-color: #FA787E;
 //  }
-// 
+//
 //  .form input.ng-valid.ng-touched {
 //    background-color: #78FA89;
 //  }
 
  .red {
    color: red;
+ }
+
+ .purple {
+   color: #97314c;
  }

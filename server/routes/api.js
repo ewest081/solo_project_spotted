@@ -34,6 +34,22 @@ router.get('/getUser/:username', function(request, response){
 });
 
 
+router.post('/deleteEntry/:id', function(request, response){
+
+    pg.connect(connectionString, function(error, client){
+      if(error) console.log(error);
+      var query;
+      query = client.query('DELETE FROM entries WHERE id = $1', [request.params.id]);
+
+      query.on('end', function(){
+        client.end();
+        response.send('delete_success');
+      });
+    });
+
+});
+
+
 router.get('/getSimpleList', function(request, response){
     var results = [];
     // console.log(request.query);

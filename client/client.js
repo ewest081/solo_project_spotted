@@ -79,6 +79,14 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
           templateUrl: 'views/log_out.html',
           controller: 'LogOutController',
         })
+        .when('/delete', {
+          templateUrl: 'views/delete.html',
+          controller: 'DeleteController',
+        })
+        .when('/delete_success', {
+          templateUrl: 'views/delete_success.html',
+          controller: 'DeleteSuccessController',
+        })
         .when('/error', {
           templateUrl: 'views/error.html',
           controller: 'ErrorController',
@@ -200,6 +208,10 @@ app.controller('RegisterController', ['$scope', '$http', '$location', 'allUsers'
 
 
 app.controller('RegisterSuccessController', ['$scope', '$http', function($scope, $http){
+
+}]);
+
+app.controller('DeleteSuccessController', ['$scope', '$http', function($scope, $http){
 
 }]);
 
@@ -395,6 +407,22 @@ app.controller('LogOutController', ['$scope', '$http', 'userData', '$location', 
 app.controller('FailController', ['$scope', function($scope){
 
 }]);
+
+
+app.controller('DeleteController', ['$scope', 'userData', 'currentEntry', '$http', '$location', function($scope, userData, currentEntry, $http, $location){
+  $scope.thisEntry = currentEntry.currentEntry.data;
+  var thisEntryID = currentEntry.currentEntry.data.id;
+  var userID = userData.currentUser.id;
+
+  $scope.deleteEntry = function(){
+    var params = '/' + thisEntryID;
+    $http.post('/api/deleteEntry' + params).then(function(response){
+      $location.path(response.data);
+    });
+  };
+
+}]);
+
 
 
 app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$http', '$location', function($scope, userData, currentEntry, $http, $location){

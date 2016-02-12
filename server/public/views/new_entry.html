@@ -4,7 +4,7 @@
 <form name="form" class="new-entry form" novalidate>
   <div class="entry-box">
     <h2>General</h2>
-    <label>Category (Required): </label><select ng-model="data.category" name="category" required="">
+    <label>Category <span class="purple">(*Required*)</span>: </label><select ng-model="data.category" name="category" required="">
       <option ng-repeat="category in categories">{{category}}</option>
     </select><br/>
   </div>
@@ -14,7 +14,7 @@
   <br />
 
   <div class="entry-box">
-    <label>Common Name (Required): </label><input name="common_name" type="text" ng-model="data.common_name" required=""/><br/>
+    <label>Common Name <span class="purple">(*Required*)</span>: </label><input name="common_name" type="text" ng-model="data.common_name" required=""/><br/>
   </div>
   <div ng-show="form.$submitted || form.common_name.$touched">
     <div class="red" ng-show="form.common_name.$error.required">*Common Name Required*</div>
@@ -27,20 +27,12 @@
   <br />
 
   <div class="entry-box">
-    <h3>Location</h3>
-    <label>Country: </label><input type="text" ng-model="data.location_country"/><br/>
-    <label>State/Province: </label><input type="text" ng-model="data.location_state"/><br/>
-    <label>County/Parish: </label><input type="text" ng-model="data.location_county"/><br/>
-  </div>
-  <br />
-
-  <div class="entry-box">
     <h3>Date Spotted</h3>
     <!-- <label>Year: </label><input type="date" ng-model="data.date_spotted"/>
     <p>Or as much as you can remember:</p> -->
-    <label>Year (Required) (yyyy): </label><input name="year" type="text" ng-model="data.year_spotted" required=""/>
-    <label>Month (mm): </label><input type="text" ng-model="data.month_spotted"/>
-    <label>Day(dd): </label><input type="text" ng-model="data.day_spotted"/><br/>
+    <label>Year <span class="purple">(*Required*)</span> (yyyy): </label><input name="year" type="number" ng-model="data.year_spotted" required=""/>
+    <label>Month (mm): </label><input type="number" name="month" min="1" max="12" ng-model="data.month_spotted"/>
+    <label>Day(dd): </label><input type="number" ng-model="data.day_spotted"/><br/>
     <br />
     <div ng-show="form.$submitted || form.year.$touched">
       <div class="red" ng-show="form.year.$error.required">*Year Spotted required*</div>
@@ -48,6 +40,14 @@
     <label>Time of day: </label><select ng-model="data.time_spotted">
         <option ng-repeat="time in timeList">{{time}}</option>
       </select>
+  </div>
+  <br />
+
+  <div class="entry-box">
+    <h3>Location</h3>
+    <label>Country: </label><input type="text" ng-model="data.location_country"/><br/>
+    <label>State/Province: </label><input type="text" ng-model="data.location_state"/><br/>
+    <label>County/Parish: </label><input type="text" ng-model="data.location_county"/><br/>
   </div>
   <br />
 
