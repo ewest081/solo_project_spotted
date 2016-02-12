@@ -27,7 +27,7 @@ footer {
   width: 100%;
   margin: 0;
   background-color: #5a9330;
-  // background-image: url("../images/jungle.jpg");
+  background-image: url("../images/jungle.jpg");
   padding: 20px 0;
   border-top: solid 5px black;
   border-bottom: solid 5px black;
@@ -76,11 +76,12 @@ footer {
 .button-box {
   margin: 0 auto;
   text-align: center;
+  width: 80%;
 }
 
 .home-page {
   button{
-    width: 75%;
+    width: 100%;
     margin: 10px auto;
     height: 100px;
     background-color: #3d44d0;
@@ -89,10 +90,32 @@ footer {
     border-left: solid 5px #5D63DA;
     border-bottom: solid 5px #111898;
     border-right: solid 5px #111898;
+    }
+  .small {
+    width: 100%;
+    height: 50px;
+    background-color: #5a9330;
+    color: #d5a954;
+    border-top: solid 3px #80B759;
+    border-left: solid 3px #80B759;
+    border-bottom: solid 3px #1E4900;
+    border-right: solid 3px #1E4900;
   }
   button:hover {
     background-color: #1B24C7;
   }
+  .small:hover{
+    background-color: #386E12;
+  }
+  .about-container {
+    width: 100%;
+    text-align: left;
+    img {
+      float: right;
+      width: 200px;
+    }
+  }
+
 }
 
 .nav {
@@ -120,7 +143,37 @@ footer {
   }
 }
 
-.sign-in, .register, .new-entry, .delete-entry, .guest-home, .error, .edit-profile, .entry-success, .view-data, .view-entry, .log-out, .failed-login {
+.banner-image {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.stack {
+  float: right;
+  width: 320px;
+  img {
+    margin: 4px;
+    width: 300px;
+  }
+}
+
+// .sign-in {
+//   width: 60%;
+//   margin: 0 auto;
+// }
+
+.pictures-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  img {
+    margin: 2px;
+    width: 200px;
+    height: 150px;
+  }
+}
+
+.sign-in, .about-description, .register, .new-entry, .delete-entry, .guest-home, .error, .edit-profile, .entry-success, .view-data, .view-entry, .log-out, .failed-login {
   .sign-in-box {
      width: 200px;
      display: flex;

@@ -23,6 +23,7 @@ footer {
   width: 100%;
   margin: 0;
   background-color: #5a9330;
+  background-image: url("../images/jungle.jpg");
   padding: 20px 0;
   border-top: solid 5px black;
   border-bottom: solid 5px black; }
@@ -54,10 +55,11 @@ footer {
 
 .button-box {
   margin: 0 auto;
-  text-align: center; }
+  text-align: center;
+  width: 80%; }
 
 .home-page button {
-  width: 75%;
+  width: 100%;
   margin: 10px auto;
   height: 100px;
   background-color: #3d44d0;
@@ -66,8 +68,25 @@ footer {
   border-left: solid 5px #5D63DA;
   border-bottom: solid 5px #111898;
   border-right: solid 5px #111898; }
+.home-page .small {
+  width: 100%;
+  height: 50px;
+  background-color: #5a9330;
+  color: #d5a954;
+  border-top: solid 3px #80B759;
+  border-left: solid 3px #80B759;
+  border-bottom: solid 3px #1E4900;
+  border-right: solid 3px #1E4900; }
 .home-page button:hover {
   background-color: #1B24C7; }
+.home-page .small:hover {
+  background-color: #386E12; }
+.home-page .about-container {
+  width: 100%;
+  text-align: left; }
+  .home-page .about-container img {
+    float: right;
+    width: 200px; }
 
 .nav {
   background-color: #3d44d0;
@@ -90,13 +109,33 @@ footer {
   .wide-box h1 {
     text-align: center; }
 
-.sign-in .sign-in-box, .register .sign-in-box, .new-entry .sign-in-box, .delete-entry .sign-in-box, .guest-home .sign-in-box, .error .sign-in-box, .edit-profile .sign-in-box, .entry-success .sign-in-box, .view-data .sign-in-box, .view-entry .sign-in-box, .log-out .sign-in-box, .failed-login .sign-in-box {
+.banner-image {
+  width: 100%;
+  margin: 0 auto; }
+
+.stack {
+  float: right;
+  width: 320px; }
+  .stack img {
+    margin: 4px;
+    width: 300px; }
+
+.pictures-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; }
+  .pictures-box img {
+    margin: 2px;
+    width: 200px;
+    height: 150px; }
+
+.sign-in .sign-in-box, .about-description .sign-in-box, .register .sign-in-box, .new-entry .sign-in-box, .delete-entry .sign-in-box, .guest-home .sign-in-box, .error .sign-in-box, .edit-profile .sign-in-box, .entry-success .sign-in-box, .view-data .sign-in-box, .view-entry .sign-in-box, .log-out .sign-in-box, .failed-login .sign-in-box {
   width: 200px;
   display: flex;
   justify-content: space-between; }
-  .sign-in .sign-in-box input, .register .sign-in-box input, .new-entry .sign-in-box input, .delete-entry .sign-in-box input, .guest-home .sign-in-box input, .error .sign-in-box input, .edit-profile .sign-in-box input, .entry-success .sign-in-box input, .view-data .sign-in-box input, .view-entry .sign-in-box input, .log-out .sign-in-box input, .failed-login .sign-in-box input {
+  .sign-in .sign-in-box input, .about-description .sign-in-box input, .register .sign-in-box input, .new-entry .sign-in-box input, .delete-entry .sign-in-box input, .guest-home .sign-in-box input, .error .sign-in-box input, .edit-profile .sign-in-box input, .entry-success .sign-in-box input, .view-data .sign-in-box input, .view-entry .sign-in-box input, .log-out .sign-in-box input, .failed-login .sign-in-box input {
     width: 100px; }
-.sign-in button, .register button, .new-entry button, .delete-entry button, .guest-home button, .error button, .edit-profile button, .entry-success button, .view-data button, .view-entry button, .log-out button, .failed-login button {
+.sign-in button, .about-description button, .register button, .new-entry button, .delete-entry button, .guest-home button, .error button, .edit-profile button, .entry-success button, .view-data button, .view-entry button, .log-out button, .failed-login button {
   width: 200px;
   margin: 0 0 10px 0;
   background-color: #5a9330;
@@ -105,38 +144,38 @@ footer {
   border-left: solid 2px #80B759;
   border-bottom: solid 2px #1E4900;
   border-right: solid 2px #1E4900; }
-.sign-in .alternate, .register .alternate, .new-entry .alternate, .delete-entry .alternate, .guest-home .alternate, .error .alternate, .edit-profile .alternate, .entry-success .alternate, .view-data .alternate, .view-entry .alternate, .log-out .alternate, .failed-login .alternate {
+.sign-in .alternate, .about-description .alternate, .register .alternate, .new-entry .alternate, .delete-entry .alternate, .guest-home .alternate, .error .alternate, .edit-profile .alternate, .entry-success .alternate, .view-data .alternate, .view-entry .alternate, .log-out .alternate, .failed-login .alternate {
   background-color: #3d44d0;
   border-top: solid 2px #5D63DA;
   border-left: solid 2px #5D63DA;
   border-bottom: solid 2px #111898;
   border-right: solid 2px #111898; }
-.sign-in button:hover, .register button:hover, .new-entry button:hover, .delete-entry button:hover, .guest-home button:hover, .error button:hover, .edit-profile button:hover, .entry-success button:hover, .view-data button:hover, .view-entry button:hover, .log-out button:hover, .failed-login button:hover {
+.sign-in button:hover, .about-description button:hover, .register button:hover, .new-entry button:hover, .delete-entry button:hover, .guest-home button:hover, .error button:hover, .edit-profile button:hover, .entry-success button:hover, .view-data button:hover, .view-entry button:hover, .log-out button:hover, .failed-login button:hover {
   background-color: #386E12; }
-.sign-in .alternate:hover, .register .alternate:hover, .new-entry .alternate:hover, .delete-entry .alternate:hover, .guest-home .alternate:hover, .error .alternate:hover, .edit-profile .alternate:hover, .entry-success .alternate:hover, .view-data .alternate:hover, .view-entry .alternate:hover, .log-out .alternate:hover, .failed-login .alternate:hover {
+.sign-in .alternate:hover, .about-description .alternate:hover, .register .alternate:hover, .new-entry .alternate:hover, .delete-entry .alternate:hover, .guest-home .alternate:hover, .error .alternate:hover, .edit-profile .alternate:hover, .entry-success .alternate:hover, .view-data .alternate:hover, .view-entry .alternate:hover, .log-out .alternate:hover, .failed-login .alternate:hover {
   background-color: #1B24C7; }
-.sign-in .cancel, .register .cancel, .new-entry .cancel, .delete-entry .cancel, .guest-home .cancel, .error .cancel, .edit-profile .cancel, .entry-success .cancel, .view-data .cancel, .view-entry .cancel, .log-out .cancel, .failed-login .cancel {
+.sign-in .cancel, .about-description .cancel, .register .cancel, .new-entry .cancel, .delete-entry .cancel, .guest-home .cancel, .error .cancel, .edit-profile .cancel, .entry-success .cancel, .view-data .cancel, .view-entry .cancel, .log-out .cancel, .failed-login .cancel {
   background-color: #97314c;
   border-top: solid 2px #BD5C76;
   border-left: solid 2px #BD5C76;
   border-bottom: solid 2px #4A0014;
   border-right: solid 2px #4A0014; }
-.sign-in .cancel:hover, .register .cancel:hover, .new-entry .cancel:hover, .delete-entry .cancel:hover, .guest-home .cancel:hover, .error .cancel:hover, .edit-profile .cancel:hover, .entry-success .cancel:hover, .view-data .cancel:hover, .view-entry .cancel:hover, .log-out .cancel:hover, .failed-login .cancel:hover {
+.sign-in .cancel:hover, .about-description .cancel:hover, .register .cancel:hover, .new-entry .cancel:hover, .delete-entry .cancel:hover, .guest-home .cancel:hover, .error .cancel:hover, .edit-profile .cancel:hover, .entry-success .cancel:hover, .view-data .cancel:hover, .view-entry .cancel:hover, .log-out .cancel:hover, .failed-login .cancel:hover {
   background-color: #71122B; }
-.sign-in .purp-btn, .register .purp-btn, .new-entry .purp-btn, .delete-entry .purp-btn, .guest-home .purp-btn, .error .purp-btn, .edit-profile .purp-btn, .entry-success .purp-btn, .view-data .purp-btn, .view-entry .purp-btn, .log-out .purp-btn, .failed-login .purp-btn {
+.sign-in .purp-btn, .about-description .purp-btn, .register .purp-btn, .new-entry .purp-btn, .delete-entry .purp-btn, .guest-home .purp-btn, .error .purp-btn, .edit-profile .purp-btn, .entry-success .purp-btn, .view-data .purp-btn, .view-entry .purp-btn, .log-out .purp-btn, .failed-login .purp-btn {
   background-color: #7233ce;
   border-top: solid 2px #8954D8;
   border-left: solid 2px #8954D8;
   border-bottom: solid 2px #420A94;
   border-right: solid 2px #420A94; }
-.sign-in .purp-btn:hover, .register .purp-btn:hover, .new-entry .purp-btn:hover, .delete-entry .purp-btn:hover, .guest-home .purp-btn:hover, .error .purp-btn:hover, .edit-profile .purp-btn:hover, .entry-success .purp-btn:hover, .view-data .purp-btn:hover, .view-entry .purp-btn:hover, .log-out .purp-btn:hover, .failed-login .purp-btn:hover {
+.sign-in .purp-btn:hover, .about-description .purp-btn:hover, .register .purp-btn:hover, .new-entry .purp-btn:hover, .delete-entry .purp-btn:hover, .guest-home .purp-btn:hover, .error .purp-btn:hover, .edit-profile .purp-btn:hover, .entry-success .purp-btn:hover, .view-data .purp-btn:hover, .view-entry .purp-btn:hover, .log-out .purp-btn:hover, .failed-login .purp-btn:hover {
   background-color: #5910C5; }
-.sign-in .medium, .register .medium, .new-entry .medium, .delete-entry .medium, .guest-home .medium, .error .medium, .edit-profile .medium, .entry-success .medium, .view-data .medium, .view-entry .medium, .log-out .medium, .failed-login .medium {
+.sign-in .medium, .about-description .medium, .register .medium, .new-entry .medium, .delete-entry .medium, .guest-home .medium, .error .medium, .edit-profile .medium, .entry-success .medium, .view-data .medium, .view-entry .medium, .log-out .medium, .failed-login .medium {
   width: 75%;
   height: 85px; }
-.sign-in .tiny, .register .tiny, .new-entry .tiny, .delete-entry .tiny, .guest-home .tiny, .error .tiny, .edit-profile .tiny, .entry-success .tiny, .view-data .tiny, .view-entry .tiny, .log-out .tiny, .failed-login .tiny {
+.sign-in .tiny, .about-description .tiny, .register .tiny, .new-entry .tiny, .delete-entry .tiny, .guest-home .tiny, .error .tiny, .edit-profile .tiny, .entry-success .tiny, .view-data .tiny, .view-entry .tiny, .log-out .tiny, .failed-login .tiny {
   width: 80px; }
-.sign-in .wide-box, .register .wide-box, .new-entry .wide-box, .delete-entry .wide-box, .guest-home .wide-box, .error .wide-box, .edit-profile .wide-box, .entry-success .wide-box, .view-data .wide-box, .view-entry .wide-box, .log-out .wide-box, .failed-login .wide-box {
+.sign-in .wide-box, .about-description .wide-box, .register .wide-box, .new-entry .wide-box, .delete-entry .wide-box, .guest-home .wide-box, .error .wide-box, .edit-profile .wide-box, .entry-success .wide-box, .view-data .wide-box, .view-entry .wide-box, .log-out .wide-box, .failed-login .wide-box {
   width: 100%;
   margin: 10px auto;
   color: #d5a954;
@@ -145,7 +184,7 @@ footer {
   border-left: solid 2px #5D63DA;
   border-bottom: solid 2px #111898;
   border-right: solid 2px #111898; }
-  .sign-in .wide-box h1, .register .wide-box h1, .new-entry .wide-box h1, .delete-entry .wide-box h1, .guest-home .wide-box h1, .error .wide-box h1, .edit-profile .wide-box h1, .entry-success .wide-box h1, .view-data .wide-box h1, .view-entry .wide-box h1, .log-out .wide-box h1, .failed-login .wide-box h1 {
+  .sign-in .wide-box h1, .about-description .wide-box h1, .register .wide-box h1, .new-entry .wide-box h1, .delete-entry .wide-box h1, .guest-home .wide-box h1, .error .wide-box h1, .edit-profile .wide-box h1, .entry-success .wide-box h1, .view-data .wide-box h1, .view-entry .wide-box h1, .log-out .wide-box h1, .failed-login .wide-box h1 {
     text-align: center; }
 
 .center-this {

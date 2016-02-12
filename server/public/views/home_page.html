@@ -4,12 +4,27 @@
     <h2>A Wildlife Viewing Log and Citizen Science Tool.</h2>
   </div>
   <div class="button-box">
+    <img class="banner-image" src="../assets/images/alligator_bar.jpg" alt="American Alligator"/>
+
     <button class="about box" ng-click="toggleAbout()"><h1>About Spotted</h1></button>
 
-    <div class="about" ng-show="about">
+    <div class="about-container" ng-show="about">
+      <img src="../assets/images/gecko.jpg" alt="Gold Dust Day Gecko"/>
+      <h2>What is Spotted?</h2>
       <p>
-        Here's some description of Spotted!
+        <ul>
+          <li>Do you have a life list on post-it notes in the back of your field guide?  </li>
+          <li>Have you ever wanted to wanted to save more detailed information about the animals you've spotted on your trips?  </li>
+          <li>Would you like to see information about animals others have spotted?  </li>
+        </ul>
       </p>
+      <h3>Then Spotted was built for you!</h3>
+      <p>
+        Create an account to start logging animals you've spotted today!
+        <br /><br />
+        Or, if you want to see what our users have spotted, you can proceed as a guest!
+      </p>
+      <a href="/about"><button class="small"><h3>Learn more about Spotted!</h3></button></a>
     </div>
 
     <a href="/sign_in"><button class="sign-in box"><h1>Log a Spotting! Sign In</h1></button></a>
