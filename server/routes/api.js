@@ -136,7 +136,7 @@ router.get('/getComplexList', function(request, response){
         query = client.query('SELECT * FROM entries WHERE year_spotted BETWEEN $1 AND $2 AND (common_name LIKE $3 OR scientific_name LIKE $3) AND (location_country LIKE $4 OR location_state LIKE $4 OR location_county LIKE $4) EXCEPT SELECT * FROM entries WHERE category != $5 ORDER by common_name', [search.start_date, search.end_date, search.name_search, search.location_search, search.category]);
       }
 
-      console.log(query);
+      // console.log(query);
 
       query.on('row', function(row){
         results.push(row);

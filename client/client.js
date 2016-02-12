@@ -521,7 +521,7 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
         $scope.entries = response.data;
 
         for(i=0; i < response.data.length; i++){
-          $scope.entries[i].number = i;
+          $scope.entries[i].number = i + 1;
         }
       });
   };
