@@ -6,20 +6,29 @@
       <label>Username (Required): </label><input type="text" ng-model-options="{updateOn: 'blur'}" ng-model="data.username" name="username" required="" usernameAvailable/><br/>
     </div>
     <div ng-show="form.$submitted || form.username.$touched">
-      <div class="red" ng-show="form.username.$error.required">*Username required*</div>
+      <div class="red" ng-show="form.username.$error.required">*Username Required*</div>
     </div>
     <p ng-show="taken" class="red">*This username is already taken!*</p>
-  
+
     <br />
     <button class="alternate" ng-click="checkUsername()">Check Availability</button><br/>
 
     <br />
     <div class="register-box">
-      <label>Password (Required): </label><input type="password" ng-model="data.password" name="password" required=""/><br/>
+      <label>Password (Required): </label><input type="password" ng-model="data.password" name="password" required=""/> <br/>
     </div>
     <div ng-show="form.$submitted || form.password.$touched">
-      <div class="red" ng-show="form.password.$error.required">*Password required*</div>
+      <div class="red" ng-show="form.password.$error.required">*Password Required*</div>
     </div>
+    <br />
+    <div class="register-box">
+      <label>Re-enter Password: </label><input ng-blur="checkPassword()" type="password" ng-model="data.password2" name="password2" required=""/> <br/>
+    </div>
+    <div ng-show="form.$submitted || form.password2.$touched">
+      <div class="red" ng-show="form.password2.$error.required" >*Password Required*</div>
+    </div>
+    <p ng-show="mismatch" class="red">*Passwords do not match!*</p>
+
     <br />
     <div>
       <div class="register-box">
@@ -39,7 +48,7 @@
       <br />
 
       <button class="cancel" ng-click="resetForm(form)">Reset Form</button><br/>
-      <button ng-click="registerData()">Register</button><br/>
+      <button type="submit" ng-click="registerData()">Register</button><br/>
       <p>Already registered with Spotted?</p>
       <a href="/sign_in"><button class="alternate">Sign In</button></a>
     </div>

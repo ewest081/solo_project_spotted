@@ -1,17 +1,23 @@
 <h1>Log a new Spotting!</h1>
 
 
-<div class="new-entry">
+<form name="form" class="new-entry form" novalidate>
   <div class="entry-box">
     <h2>General</h2>
-    <label>Category: </label><select ng-model="data.category">
+    <label>Category (Required): </label><select ng-model="data.category" name="category" required="">
       <option ng-repeat="category in categories">{{category}}</option>
     </select><br/>
+  </div>
+  <div ng-show="form.$submitted || form.category.$touched">
+    <div class="red" ng-show="form.category.$error.required">*Category Required*</div>
   </div>
   <br />
 
   <div class="entry-box">
-    <label>Common Name: </label><input type="text" ng-model="data.common_name"/><br/>
+    <label>Common Name (Required): </label><input name="common_name" type="text" ng-model="data.common_name" required=""/><br/>
+  </div>
+  <div ng-show="form.$submitted || form.common_name.$touched">
+    <div class="red" ng-show="form.common_name.$error.required">*Common Name Required*</div>
   </div>
   <br />
 
@@ -32,10 +38,13 @@
     <h3>Date Spotted</h3>
     <!-- <label>Year: </label><input type="date" ng-model="data.date_spotted"/>
     <p>Or as much as you can remember:</p> -->
-    <label>Year (yyyy): </label><input type="text" ng-model="data.year_spotted"/>
+    <label>Year (Required) (yyyy): </label><input name="year" type="text" ng-model="data.year_spotted" required=""/>
     <label>Month (mm): </label><input type="text" ng-model="data.month_spotted"/>
     <label>Day(dd): </label><input type="text" ng-model="data.day_spotted"/><br/>
     <br />
+    <div ng-show="form.$submitted || form.year.$touched">
+      <div class="red" ng-show="form.year.$error.required">*Year Spotted required*</div>
+    </div>
     <label>Time of day: </label><select ng-model="data.time_spotted">
         <option ng-repeat="time in timeList">{{time}}</option>
       </select>
@@ -96,4 +105,4 @@
     <a href="/success"><button class="cancel">Cancel</button></a>
   </div>
 
-</div>
+</form>

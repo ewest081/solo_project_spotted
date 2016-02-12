@@ -141,9 +141,9 @@ app.controller('SignInController', ['$scope', '$http', '$location', 'userData', 
 app.controller('RegisterController', ['$scope', '$http', '$location', 'allUsers', function($scope, $http, $location, allUsers){
   $scope.data = {};
   $scope.taken = false;
-  $scope.available = false;
-  var pwError = false;
-  var unError = false;
+  $scope.mismatch = false;
+  // var pwError = false;
+  // var unError = false;
   var usernames = [];
   allUsers.getUsers();
 
@@ -156,6 +156,13 @@ app.controller('RegisterController', ['$scope', '$http', '$location', 'allUsers'
       if(usernames[i] === $scope.data.username){
         $scope.taken = true;
       }
+    }
+  };
+
+  $scope.checkPassword = function(){
+    $scope.mismatch = false;
+    if($scope.data.password !== $scope.data.password2){
+      $scope.mismatch = true;
     }
   };
 
