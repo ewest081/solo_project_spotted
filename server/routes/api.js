@@ -165,10 +165,6 @@ router.get('/getKeyword', function(request, response){
 
     query = client.query('SELECT * FROM entries WHERE ' + globalString + '(username LIKE $1 OR common_name LIKE $1 OR scientific_name LIKE $1 OR location_country LIKE $1 OR location_state LIKE $1 OR location_county LIKE $1 OR time_spotted LIKE $1 OR individual_sex LIKE $1 OR individual_age LIKE $1 OR individual_description LIKE $1 OR additional_notes LIKE $1) ORDER BY common_name', [request.query.keyword]);
 
-    console.log(request.query.user_id);
-    console.log(globalString);
-    console.log(query);
-
     query.on('row', function(row){
       results.push(row);
     });
