@@ -120,7 +120,7 @@ footer {
   }
 }
 
-.sign-in, .register, .new-entry, .guest-home, .edit-profile, .entry-success, .view-data, .view-entry, .log-out, .failed-login {
+.sign-in, .register, .new-entry, .guest-home, .error, .edit-profile, .entry-success, .view-data, .view-entry, .log-out, .failed-login {
   .sign-in-box {
      width: 200px;
      display: flex;
@@ -300,3 +300,16 @@ table, th, td {
     text-align: center;
   }
 }
+
+
+// .form input.ng-invalid.ng-touched {
+//    background-color: #FA787E;
+//  }
+// 
+//  .form input.ng-valid.ng-touched {
+//    background-color: #78FA89;
+//  }
+
+ .red {
+   color: red;
+ }

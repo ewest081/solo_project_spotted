@@ -55,6 +55,27 @@ router.get('/getSimpleList', function(request, response){
     });
 });
 
+router.get('/allUsers', function(request, response){
+  var results = [];
+
+  pg.connect(connectionString, function(error, client){
+    if (error) console.log(error);
+    var query;
+    query = client.query('SELECT username FROM users');
+
+    query.on('row', function(row){
+      results.push(row);
+    });
+
+    query.on('end', function(){
+      client.end();
+      // console.log(results);
+      return response.json(results);
+    });
+  });
+
+});
+
 router.get('/getTableData', function(request, response){
     var results = [];
     // console.log(request.query);
@@ -157,11 +178,6 @@ router.post('/registerUser', function(request, response){
 
   pg.connect(connectionString, function(err, client){
 
-      // var duplicate = client.query("SELECT username FROM users WHERE username = $1", [newUser.username]);
-      // if(duplicate == newUser.username){
-      //   console.log("Duplicate username");
-      // }else{
-
       var query = client.query('INSERT INTO users (username, password, first_name, last_name, email) VALUES ($1, $2, $3, $4, $5)', [newUser.username, newUser.password, newUser.first_name, newUser.last_name, newUser.email]);
 
       query.on('end', function(){
@@ -170,9 +186,9 @@ router.post('/registerUser', function(request, response){
       });
 
       if(err) {
-          console.log(Error);
+          console.log(error);
+          response.send('error');
       }
-    // }//here's your extra curly, idiot!
     });
 });
 

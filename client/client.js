@@ -79,6 +79,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
           templateUrl: 'views/log_out.html',
           controller: 'LogOutController',
         })
+        .when('/error', {
+          templateUrl: 'views/error.html',
+          controller: 'ErrorController',
+        })
         .otherwise({
           redirectTo: '/'
         });
@@ -134,22 +138,56 @@ app.controller('SignInController', ['$scope', '$http', '$location', 'userData', 
 }]);
 
 
-app.controller('RegisterController', ['$scope', '$http', '$location', function($scope, $http, $location){
+app.controller('RegisterController', ['$scope', '$http', '$location', 'allUsers', function($scope, $http, $location, allUsers){
   $scope.data = {};
+  $scope.taken = false;
+  $scope.available = false;
+  var pwError = false;
+  var unError = false;
+  var usernames = [];
+  allUsers.getUsers();
+
+
+  $scope.checkUsername = function(){
+    $scope.taken = false;
+    usernames = allUsers.allUsers;
+    // console.log(usernames);
+    for(i=0; i<usernames.length; i++){
+      if(usernames[i] === $scope.data.username){
+        $scope.taken = true;
+      }
+    }
+  };
 
   $scope.registerData = function(){
-    $http({
-      url: '/api/registerUser',
-      method: 'POST',
-      params: {username: $scope.data.username,
-                password: $scope.data.password,
-                first_name: $scope.data.first_name,
-                last_name: $scope.data.last_name,
-                email: $scope.data.email}
-    }).then(function(response){
-        $location.path(response.data);
-      });
+  // if($scope.taken === false && pwError === false){
+      $http({
+        url: '/api/registerUser',
+        method: 'POST',
+        params: {username: $scope.data.username,
+                  password: $scope.data.password,
+                  first_name: $scope.data.first_name,
+                  last_name: $scope.data.last_name,
+                  email: $scope.data.email}
+      }).then(function(response){
+          $location.path(response.data);
+        });
+      // }else{
+      //   console.log("Nope! Error!");
+      // }
   };
+
+  $scope.resetForm = function(form){
+    if(form){
+      form.$setPristine();
+      form.$setUntouched();
+      $scope.data = {};
+      // var usernames = [];
+      $scope.taken = false;
+    }
+  };
+
+  $scope.resetForm();
 
 }]);
 
@@ -705,6 +743,11 @@ app.controller('NewEntryController', ['$scope', '$http', '$location', 'userData'
   };
 }]);
 
+
+app.controller('ErrorController', ['$scope', function($scope){
+
+}]);
+
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
 //              App Factories
 //[][][][][][][][][][][][][][][][][][][][][][][][][][]
@@ -767,6 +810,25 @@ app.factory('currentEntry', ['$http', function($http){
     currentEntry: currentEntry,
     setEntry: setEntry,
     clearCurrentEntry: clearCurrentEntry
+  };
+
+}]);
+
+
+app.factory('allUsers', ['$http', function($http){
+  var allUsers = [];
+
+  var getUsers = function(){
+    $http.get('/api/allUsers').then(function(response){
+        for(i=0; i<response.data.length; i++){
+          allUsers.push(response.data[i].username);
+        }
+    });
+  };
+
+  return{
+    allUsers: allUsers,
+    getUsers: getUsers
   };
 
 }]);
