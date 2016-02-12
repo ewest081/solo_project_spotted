@@ -444,7 +444,7 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
   $scope.endDate = '';
   $scope.nameSearch = '';
   $scope.locationSearch = '';
-  $scope.globalSearch = false;
+  $scope.globalSearch = 'false';
   $scope.keywordParam = '';
 
   $scope.entries = [];
@@ -466,7 +466,6 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
     $scope.entries = [];
     $scope.responseLength = 0;
     $scope.complexResponse = false;
-    $scope.globalSearch = false;
   };
   $scope.keywordTog = function(){
     $scope.keyword = $scope.keyword === true ? false: true;
