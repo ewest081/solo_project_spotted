@@ -3,16 +3,21 @@
 <div class="new-entry">
   <div class="entry-box">
     <h2>General</h2>
-    <label>Category: </label><select ng-model="data.category">
+    <label>Category <span class="purple">(*Required*)</span>: </label><select ng-model="data.category" name="category" required="">
       <option ng-repeat="category in categories">{{category}}</option>
     </select><br/>
+  </div>
+  <div ng-show="form.$submitted || form.category.$touched">
+    <div class="red" ng-show="form.category.$error.required">*Category Required*</div>
   </div>
   <br />
 
   <div class="entry-box">
-    <label>Common Name: </label><input type="text" ng-model="data.common_name"/><br/>
+    <label>Common Name <span class="purple">(*Required*)</span>: </label><input name="common_name" type="text" ng-model="data.common_name" required=""/><br/>
   </div>
-  <br />
+  <div ng-show="form.$submitted || form.common_name.$touched">
+    <div class="red" ng-show="form.common_name.$error.required">*Common Name Required*</div>
+  </div>
 
   <div class="entry-box">
     <label>Scientific Name: </label><input type="text" ng-model="data.scientific_name"/><br/>
@@ -29,9 +34,15 @@
 
   <div class="entry-box">
     <h3>Date Spotted</h3>
-    <label>Year (yyyy): </label><input type="text" ng-model="data.year_spotted"/>
-    <label>Month (mm): </label><input type="text" ng-model="data.month_spotted"/>
-    <label>Day(dd): </label><input type="text" ng-model="data.day_spotted"/><br/>
+    <label>Year <span class="purple">(*Required*)</span>: </label><select type="number" ng-model="data.year_spotted">
+        <option ng-repeat="year in yearList">{{year}}</option>
+      </select><br/>
+    <label>Month: </label><select type="text" name="month" ng-model="data.month_spotted">
+        <option ng-repeat="month in monthList">{{month}}</option>
+      </select><br/>
+    <label>Day: </label><select type="number" ng-model="data.day_spotted">
+        <option ng-repeat="day in dayList">{{day}}</option>
+      </select><br/>
     <br />
     <label>Time of day: </label><select ng-model="data.time_spotted">
         <option ng-repeat="time in timeList">{{time}}</option>

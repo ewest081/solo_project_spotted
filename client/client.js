@@ -676,6 +676,21 @@ app.controller('EditEntryController', ['$scope', '$http', '$location', 'userData
   $scope.sexList = ["Female", "Male", "Unknown"];
   $scope.ageList = ["Adult", "Juvenile", "Neonate"];
   $scope.tempList = ["0˚<", "0˚ - 15˚", "16˚ - 32˚", "33˚ - 49˚", "50˚ - 69˚", "70˚ - 89˚", ">90˚"];
+  $scope.monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  $scope.yearList = [];
+  $scope.dayList = [];
+
+  function getYears(){
+    for (i=2016; i>1924; i--){
+        $scope.yearList.push(i);
+    }
+  }
+
+  function getDays(){
+    for (i=1; i<32; i++){
+        $scope.dayList.push(i);
+    }
+  }
 
   var username = userData.currentUser.username;
   var userID = userData.currentUser.id;
@@ -722,6 +737,9 @@ app.controller('EditEntryController', ['$scope', '$http', '$location', 'userData
       });
   };
 
+  getYears();
+  getDays();
+
 }]);
 
 
@@ -733,7 +751,22 @@ app.controller('NewEntryController', ['$scope', '$http', '$location', 'userData'
   $scope.sexList = ["Female", "Male", "Unknown"];
   $scope.ageList = ["Adult", "Juvenile", "Neonate"];
   $scope.tempList = ["0˚<", "0˚ - 15˚", "16˚ - 32˚", "33˚ - 49˚", "50˚ - 69˚", "70˚ - 89˚", ">90˚"];
-  // $scope.weatherList = ["Sunny", "Overcast", "Raining", "Snowing", "Foggy", "Windy", "Other"];
+  $scope.monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  $scope.yearList = [];
+  $scope.dayList = [];
+
+  function getYears(){
+    for (i=2016; i>1924; i--){
+        $scope.yearList.push(i);
+    }
+  }
+
+  function getDays(){
+    for (i=1; i<32; i++){
+        $scope.dayList.push(i);
+    }
+  }
+
 
   var username = userData.currentUser.username;
   var userID = userData.currentUser.id;
@@ -777,6 +810,10 @@ app.controller('NewEntryController', ['$scope', '$http', '$location', 'userData'
         $location.path(response.data);
       });
   };
+
+  getYears();
+  getDays();
+
 }]);
 
 

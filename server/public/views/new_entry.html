@@ -30,9 +30,15 @@
     <h3>Date Spotted</h3>
     <!-- <label>Year: </label><input type="date" ng-model="data.date_spotted"/>
     <p>Or as much as you can remember:</p> -->
-    <label>Year <span class="purple">(*Required*)</span> (yyyy): </label><input name="year" type="number" ng-model="data.year_spotted" required=""/>
-    <label>Month (mm): </label><input type="number" name="month" min="1" max="12" ng-model="data.month_spotted"/>
-    <label>Day(dd): </label><input type="number" ng-model="data.day_spotted"/><br/>
+    <label>Year <span class="purple">(*Required*)</span>: </label><select name="year" type="number" ng-model="data.year_spotted" required="">
+        <option ng-repeat="year in yearList">{{year}}</option>
+      </select><br/>
+    <label>Month: </label><select type="text" name="month" ng-model="data.month_spotted">
+        <option ng-repeat="month in monthList">{{month}}</option>
+      </select><br/>
+    <label>Day: </label><select type="number" ng-model="data.day_spotted">
+        <option ng-repeat="day in dayList">{{day}}</option>
+      </select><br/>
     <br />
     <div ng-show="form.$submitted || form.year.$touched">
       <div class="red" ng-show="form.year.$error.required">*Year Spotted required*</div>
