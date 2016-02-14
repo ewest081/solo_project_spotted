@@ -268,6 +268,14 @@ table, th, td {
   border: solid 1px #3d44d0; }
   table table tr:nth-child(odd), th table tr:nth-child(odd), td table tr:nth-child(odd) {
     background-color: #a8a8a8; }
+  table .filter-btn, th .filter-btn, td .filter-btn {
+    border: none;
+    background-color: white;
+    color: #3d44d0;
+    font-weight: bold;
+    font-size: 14pt; }
+  table .filter-btn:hover, th .filter-btn:hover, td .filter-btn:hover {
+    background-color: #a8a8a8; }
 
 .guest-home .full-box {
   width: 100%; }
@@ -282,5 +290,11 @@ table, th, td {
 
 .purple {
   color: #97314c; }
+
+.sortorder:after {
+  content: '\25b2'; }
+
+.sortorder.reverse:after {
+  content: '\25bc'; }
 
 /*# sourceMappingURL=stylesheet.css.map */

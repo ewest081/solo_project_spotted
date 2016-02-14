@@ -348,6 +348,16 @@ table, th, td {
   table tr:nth-child(odd){
     background-color: #a8a8a8;
   }
+  .filter-btn {
+    border: none;
+    background-color: white;
+    color: #3d44d0;
+    font-weight: bold;
+    font-size: 14pt;
+  }
+  .filter-btn:hover {
+    background-color: #a8a8a8;
+  }
 }
 
 .guest-home {
@@ -380,4 +390,11 @@ table, th, td {
 
  .purple {
    color: #97314c;
+ }
+
+ .sortorder:after {
+   content: '\25b2';
+ }
+ .sortorder.reverse:after {
+   content: '\25bc';
  }

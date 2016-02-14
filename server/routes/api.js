@@ -131,9 +131,9 @@ router.get('/getComplexList', function(request, response){
       var query;
 
       if(search.global_search === 'false'){
-        query = client.query('SELECT * FROM entries WHERE user_id = ' + search.user_id + ' AND year_spotted BETWEEN $1 AND $2 AND (common_name LIKE $3 OR scientific_name LIKE $3) AND (location_country LIKE $4 OR location_state LIKE $4 OR location_county LIKE $4) EXCEPT SELECT * FROM entries WHERE category != $5 ORDER by common_name', [search.start_date, search.end_date, search.name_search, search.location_search, search.category]);
+        query = client.query('SELECT * FROM entries WHERE user_id = ' + search.user_id + ' AND year_spotted BETWEEN $1 AND $2 AND (LOWER(common_name) LIKE LOWER($3) OR LOWER(scientific_name) LIKE LOWER($3)) AND (LOWER(location_country) LIKE LOWER($4) OR LOWER(location_state) LIKE LOWER($4) OR LOWER(location_county) LIKE LOWER($4)) EXCEPT SELECT * FROM entries WHERE category != $5 ORDER by common_name', [search.start_date, search.end_date, search.name_search, search.location_search, search.category]);
       }else if (search.global_search === 'true'){
-        query = client.query('SELECT * FROM entries WHERE year_spotted BETWEEN $1 AND $2 AND (common_name LIKE $3 OR scientific_name LIKE $3) AND (location_country LIKE $4 OR location_state LIKE $4 OR location_county LIKE $4) EXCEPT SELECT * FROM entries WHERE category != $5 ORDER by common_name', [search.start_date, search.end_date, search.name_search, search.location_search, search.category]);
+        query = client.query('SELECT * FROM entries WHERE year_spotted BETWEEN $1 AND $2 AND (LOWER(common_name) LIKE LOWER($3) OR LOWER(scientific_name) LIKE LOWER($3)) AND (LOWER(location_country) LIKE LOWER($4) OR LOWER(location_state) LIKE LOWER($4) OR LOWER(location_county) LIKE LOWER($4)) EXCEPT SELECT * FROM entries WHERE category != $5 ORDER by common_name', [search.start_date, search.end_date, search.name_search, search.location_search, search.category]);
       }
 
       // console.log(query);
@@ -163,7 +163,7 @@ router.get('/getKeyword', function(request, response){
         globalString = 'user_id = ' + request.query.user_id + ' AND ';
     }
 
-    query = client.query('SELECT * FROM entries WHERE ' + globalString + '(username LIKE $1 OR common_name LIKE $1 OR scientific_name LIKE $1 OR location_country LIKE $1 OR location_state LIKE $1 OR location_county LIKE $1 OR time_spotted LIKE $1 OR individual_sex LIKE $1 OR individual_age LIKE $1 OR individual_description LIKE $1 OR additional_notes LIKE $1) ORDER BY common_name', [request.query.keyword]);
+    query = client.query('SELECT * FROM entries WHERE ' + globalString + '(LOWER(username) LIKE LOWER($1) OR LOWER(common_name) LIKE LOWER($1) OR LOWER(scientific_name) LIKE LOWER($1) OR LOWER(location_country) LIKE LOWER($1) OR LOWER(location_state) LIKE LOWER($1) OR LOWER(location_county) LIKE LOWER($1) OR LOWER(time_spotted) LIKE LOWER($1) OR LOWER(individual_sex) LIKE LOWER($1) OR LOWER(individual_age) LIKE LOWER($1) OR LOWER(individual_description) LIKE LOWER($1) OR LOWER(additional_notes) LIKE LOWER($1)) ORDER BY common_name', [request.query.keyword]);
 
     query.on('row', function(row){
       results.push(row);

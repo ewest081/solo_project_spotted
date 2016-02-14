@@ -439,6 +439,7 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
   $scope.viewTable = false;
   $scope.responseLength = 0;
   $scope.complexResponse = false;
+  $scope.sort = "-category";
 
   $scope.categorySelect = "All";
   $scope.categories = ["All", "Birds", "Mammals", "Herps", "Invertebrates", "Plants", "Other"];
@@ -452,6 +453,13 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
   $scope.keywordParam = '';
 
   $scope.entries = [];
+
+  $scope.filter = 'id';
+  $scope.reverse = false;
+  $scope.order = function(filter){
+    $scope.reverse = ($scope.filter === filter) ? !$scope.reverse : true;
+    $scope.filter = filter;
+  };
 
   $scope.simpleListTog = function(){
     $scope.simpleList = $scope.simpleList === true ? false: true;

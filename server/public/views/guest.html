@@ -89,7 +89,7 @@
     <div class="single-entry" ng-repeat="entry in entries">
       <h3>{{entry.common_name}}</h3>
       <p>{{entry.scientific_name}}</p>
-        <p>Day: {{entry.day_spotted}} Month: {{entry.month_spotted}} Year: {{entry.year_spotted}}</p>
+        <p>{{entry.month_spotted}} {{entry.day_spotted}}  {{entry.year_spotted}}</p>
         <p>Location: {{entry.location_country}} {{entry.location_state}} {{entry.location_county}}</p>
         <p>{{entry.individual_sex}}</p>
         <p>{{entry.individual_age}}</p>

@@ -153,28 +153,45 @@
                       <!-- Show Table -->
       <div class="view-table" ng-show="viewTable">
         <h2>View Full Table</h2>
+        <button class="purple-btn" ng-click="order('-id')">Un-Sort Table</button>
 
         <div class="ugly-table">
           <table>
             <th>
-              <td>Category</td>
-              <td>Common Name</td>
-              <td>Scientific Name</td>
-              <td>Country</td>
-              <td>State/Province</td>
-              <td>County</td>
-              <td>Year</td>
-              <td>Month</td>
-              <td>Day</td>
-              <td>Time</td>
-              <td>Group/Indv</td>
-              <td># in Group</td>
-              <td>Sex</td>
-              <td>Age</td>
-              <td>Temperature</td>
-              <td>Additional Notes</td>
+              <td><button class="filter-btn" ng-click="order('category')">Category</button>
+              <span class="sortorder" ng-show="filter === 'category'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('common_name')">Common Name</button>
+              <span class="sortorder" ng-show="filter === 'common_name'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('scientific_name')">Scientific Name</button>
+              <span class="sortorder" ng-show="filter === 'scientific_name'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('location_country')">Country</button>
+              <span class="sortorder" ng-show="filter === 'location_country'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('location_state')">State/Province</button>
+              <span class="sortorder" ng-show="filter === 'location_state'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('location_county')">County/Parish</button>
+              <span class="sortorder" ng-show="filter === 'location_county'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('year_spotted')">Year</button>
+              <span class="sortorder" ng-show="filter === 'year_spotted'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('month_spotted')">Month</button>
+              <span class="sortorder" ng-show="filter === 'month_spotted'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('day_spotted')">Day</button>
+              <span class="sortorder" ng-show="filter === 'day_spotted'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('time_spotted')">Time of Day</button>
+              <span class="sortorder" ng-show="filter === 'time_spotted'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('is_group')">Group/Indv</button>
+              <span class="sortorder" ng-show="filter === 'is_group'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('number_in_group')"># in Group</button>
+              <span class="sortorder" ng-show="filter === 'number_in_group'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('individual_sex')">Sex</button>
+              <span class="sortorder" ng-show="filter === 'individual_sex'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('individual_age')">Age</button>
+              <span class="sortorder" ng-show="filter === 'individual_age'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('temperature')">Temperature</button>
+              <span class="sortorder" ng-show="filter === 'temperature'" ng-class="{reverse:reverse}"></span></td>
+              <td><button class="filter-btn" ng-click="order('additional_notes')">Additional Notes</button>
+              <span class="sortorder" ng-show="filter === 'additional_notes'" ng-class="{reverse:reverse}"></span></td>
             </th>
-            <tr ng-repeat="entry in entries">
+            <tr ng-repeat="entry in entries | orderBy:filter:reverse">
               <td>{{entry.number}}</td>
               <td>{{entry.category}}</td>
               <td>{{entry.common_name}}</td>
