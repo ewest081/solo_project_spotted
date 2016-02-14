@@ -275,7 +275,8 @@ table, th, td {
     font-weight: bold;
     font-size: 14pt; }
   table .filter-btn:hover, th .filter-btn:hover, td .filter-btn:hover {
-    background-color: #a8a8a8; }
+    color: #5a9330;
+    background-color: white; }
 
 .guest-home .full-box {
   width: 100%; }
