@@ -242,14 +242,17 @@ app.controller('GuestController', ['$scope', '$http', '$location', 'userData', '
     $scope.sortType = $scope.sortType === true ? false: true;
     $scope.keyword = false;
     $scope.entries = [];
+    $scope.complexResponse = false;
   };
   $scope.keywordTog = function(){
     $scope.keyword = $scope.keyword === true ? false: true;
     $scope.sortType = false;
     $scope.entries = [];
+    $scope.complexResponse = false;
   };
 
   $scope.getComplexList = function(){
+    $scope.complexResponse = false;
     $scope.entrie = [];
     var category = $scope.categorySelect;
     var start_date = $scope.startDate;
@@ -292,6 +295,7 @@ app.controller('GuestController', ['$scope', '$http', '$location', 'userData', '
   };
 
   $scope.keywordSearch = function(){
+    $scope.complexResponse = false;
     var keyword = '%' + $scope.keywordParam + '%';
 
     $http({
@@ -305,7 +309,7 @@ app.controller('GuestController', ['$scope', '$http', '$location', 'userData', '
       $scope.entries = response.data;
       $scope.responseLength = response.data.length;
       $scope.complexResponse = true;
-      console.log(response.data);
+      // console.log(response.data);
     });
   };
 
