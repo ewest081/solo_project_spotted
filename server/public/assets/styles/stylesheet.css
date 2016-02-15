@@ -259,8 +259,7 @@ footer {
 
 .ugly-table {
   width: 100%;
-  overflow-x: scroll;
-  overflow-y: hidden; }
+  overflow-x: scroll; }
 
 table, th, td {
   width: 100%;

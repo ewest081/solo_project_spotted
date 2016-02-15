@@ -456,6 +456,7 @@ app.controller('ViewDataController', ['$scope', 'userData', 'currentEntry', '$ht
 
   $scope.filter = 'id';
   $scope.reverse = false;
+
   $scope.order = function(filter){
     $scope.reverse = ($scope.filter === filter) ? !$scope.reverse : true;
     $scope.filter = filter;
